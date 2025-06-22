@@ -18,7 +18,7 @@ class Umkm extends Model
         'narahubung',
         'nomor_telepon',
         'alamat_umkm',
-        'status_persetujuan',
+        //'status_persetujuan',
         'category_id'
     ];
 

@@ -48,6 +48,7 @@ class PariwisataController extends Controller
 
         Destination::create([
             'nama' => $request->title,
+            'slug' => Str::slug($request->nama),
             'deskripsi' => $request->description,
             'alamat' => $request->location,
             'harga_tiket' => null, // Bisa tambahkan input jika ingin

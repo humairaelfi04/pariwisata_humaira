@@ -29,8 +29,9 @@ class Destination extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function reviews(): HasMany
+    public function reviews()
     {
-        return $this->hasMany(Review::class, 'humaira_destination_id');
+        return $this->hasMany(Review::class, 'humaira_destination_id')->where('status_moderasi', 'disetujui');
     }
+
 }

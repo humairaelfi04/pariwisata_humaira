@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Umkm;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UmkmController extends Controller
 {
     public function index()
     {
-        $umkms = Umkm::latest()->get();
+        $umkms = Umkm::with('category')->get();
         return view('admin.umkm.index', compact('umkms'));
     }
 
@@ -20,26 +21,20 @@ class UmkmController extends Controller
         return view('admin.umkm.create', compact('categories'));
     }
 
-    public function show($id)
-    {
-        $umkm = Umkm::with('category')->findOrFail($id);
-        return view('admin.umkm.show', compact('umkm'));
-    }
-
     public function store(Request $request)
     {
+
         $request->validate([
-            'nama_usaha' => 'required|max:255',
-            'deskripsi_layanan' => 'nullable|string',
-            'narahubung' => 'required|string|max:255',
-            'nomor_telepon' => 'required|string|max:20',
-            'alamat_umkm' => 'required|string|max:255',
-            //'status_persetujuan' => 'required|in:disetujui,menunggu,ditolak',
+            'nama_usaha' => 'required|string',
+            'deskripsi_layanan' => 'required|string',
+            'narahubung' => 'required|string',
+            'nomor_telepon' => 'required|string',
+            'alamat_umkm' => 'required|string',
+            //'status_persetujuan' => 'required|in:pending,approved,rejected',
             'category_id' => 'required|exists:humaira_categories,id',
         ]);
 
         Umkm::create($request->all());
-
         return redirect()->route('admin.umkm.index')->with('success', 'UMKM berhasil ditambahkan.');
     }
 
@@ -55,27 +50,30 @@ class UmkmController extends Controller
         $umkm = Umkm::findOrFail($id);
 
         $request->validate([
-            'nama_usaha' => 'required|max:255',
-            'deskripsi_layanan' => 'nullable|string',
-            'narahubung' => 'required|string|max:255',
-            'nomor_telepon' => 'required|string|max:20',
-            'alamat_umkm' => 'required|string|max:255',
-            //'status_persetujuan' => 'required|in:disetujui,menunggu,ditolak',
+            'nama_usaha' => 'required|string',
+            'deskripsi_layanan' => 'required|string',
+            'narahubung' => 'required|string',
+            'nomor_telepon' => 'required|string',
+            'alamat_umkm' => 'required|string',
+            //'status_persetujuan' => 'required|in:pending,approved,rejected',
             'category_id' => 'required|exists:humaira_categories,id',
         ]);
 
         $umkm->update($request->all());
-
-        return redirect()->route('umkms.index')->with('success', 'UMKM berhasil diperbarui.');
+        return redirect()->route('admin.umkm.index')->with('success', 'UMKM berhasil diperbarui.');
     }
+
+    public function show($id)
+    {
+        $umkm = Umkm::with('category')->findOrFail($id);
+        return view('admin.umkm.show', compact('umkm'));
+    }
+
 
     public function destroy($id)
     {
         $umkm = Umkm::findOrFail($id);
         $umkm->delete();
-
         return redirect()->route('admin.umkm.index')->with('success', 'UMKM berhasil dihapus.');
     }
 }
-
-

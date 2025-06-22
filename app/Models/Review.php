@@ -21,9 +21,10 @@ class Review extends Model
         'status_moderasi'
     ];
 
-    public function destination(): BelongsTo
+    public function destination()
     {
         return $this->belongsTo(Destination::class, 'humaira_destination_id');
     }
+
 }
 

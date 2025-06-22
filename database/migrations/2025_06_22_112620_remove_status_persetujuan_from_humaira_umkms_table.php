@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('humaira_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_kategori');
-            $table->enum('jenis_kategori', ['destinasi', 'umkm', 'acara']);
-            $table->timestamps();
+        Schema::table('humaira_umkms', function (Blueprint $table) {
+            //
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('humaira_categories');
+        Schema::table('humaira_umkms', function (Blueprint $table) {
+            //
+        });
     }
 };

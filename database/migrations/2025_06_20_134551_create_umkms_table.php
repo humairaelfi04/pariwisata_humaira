@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('narahubung');
             $table->string('nomor_telepon');
             $table->string('alamat_umkm');
-            $table->enum('status_persetujuan', ['pending', 'approved', 'rejected'])->default('pending');
+            //$table->dropColumn('status_persetujuan');
             $table->foreignId('category_id')->constrained('humaira_categories')->onDelete('cascade');
             $table->timestamps();
         });
@@ -29,6 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('humaira_umkms');
+        Schema::table('humaira_umkms', function (Blueprint $table) {
+            
+        });
     }
 };

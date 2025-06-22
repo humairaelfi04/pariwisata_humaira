@@ -27,7 +27,7 @@
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Simpan Kategori
     </button>
-    <a href="{{ route('admin.categories.index') }}" class="ml-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+    <a href="{{ route('admin.kategori.index') }}" class="ml-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
         Batal
     </a>
 </div>
