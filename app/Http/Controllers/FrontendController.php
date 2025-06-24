@@ -30,7 +30,8 @@ class FrontendController extends Controller
 
     public function show($id)
     {
-        $destinasi = Destination::findOrFail($id);
+        $destinasi = Destination::with('category') // atau nama relasi kategori yang kamu pakai
+                    ->findOrFail($id);
         return view('frontend.destinasi.show', compact('destinasi'));
     }
 }

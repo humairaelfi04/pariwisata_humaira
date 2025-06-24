@@ -25,25 +25,17 @@
 
     <div class="row">
         @forelse ($destinations as $destination)
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    @if ($destination->url_gambar_utama)
-                        <img src="{{ asset('images/' . $destination->url_gambar_utama) }}" class="card-img-top" alt="{{ $destination->nama }}">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $destination->nama }}</h5>
-                        <p class="card-text">{{ \Illuminate\Support\Str::limit($destination->deskripsi, 100) }}</p>
-                        @if ($destination->slug)
-                            <div class="card-footer text-center">
-                                <a href="{{ route('destinasi.show', ['slug' => $destination->slug]) }}" class="btn btn-primary">Lihat Detail</a>
-                            </div>
-                        @else
-                            <span class="text-muted">Slug belum tersedia</span>
-                        @endif
+            <div class="col-md-3 mb-4">
+    <div class="card h-100">
+        <img src="{{ asset('images/' . $destination->url_gambar_utama) }}" class="card-img-top" alt="{{ $destination->nama }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ $destination->nama }}</h5>
+            <p class="card-text">{{ $destination->deskripsi }}</p>
+            <a href="{{ route('destinasi.show', $destination->id) }}" class="btn btn-primary">Lihat Detail</a>
+        </div>
+    </div>
+</div>
 
-                    </div>
-                </div>
-            </div>
         @empty
             <p>Tidak ada destinasi ditemukan.</p>
         @endforelse

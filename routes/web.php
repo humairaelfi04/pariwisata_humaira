@@ -3,14 +3,18 @@
 use App\Http\Middleware\RoleAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UmkmController;
-use App\Http\Controllers\ReviewController;
+
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Admin\UmkmController;
 use App\Http\Controllers\PariwisataController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\DestinasiController;
+use App\Http\Controllers\Public\UmkmPublicController;
+use App\Http\Controllers\Public\EventPublicController;
+use App\Http\Controllers\Public\ReviewPublicController;
 
 // Halaman utama (Frontend)
 
@@ -37,39 +41,23 @@ Route::delete('/pariwisata/{id}', [PariwisataController::class, 'destroy'])->nam
 // Pencarian wisata
 Route::get('/search', [PariwisataController::class, 'search'])->name('pariwisata.search');
 
-Route::middleware(['auth', RoleAdmin::class])->group(function () {
-    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
-    Route::get('/reviews/{id}', [ReviewController::class, 'show'])->name('reviews.show');
-    Route::post('/reviews/{id}/approve', [ReviewController::class, 'approve'])->name('reviews.approve');
-    Route::post('/reviews/{id}/reject', [ReviewController::class, 'reject'])->name('reviews.reject');
-    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
-});
+
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 Route::get('/destinasi/create', [FrontendController::class, 'create'])->name('destinasi.create')->middleware('auth');
 Route::get('/destinasi/{id}', [FrontendController::class, 'show'])->name('destinasi.show');
 
+Route::post('/review/store', [ReviewPublicController::class, 'store'])->name('review.store');
 
 
-Route::post('/destinasi/{slug}/review', [ReviewController::class, 'store'])->name('review.store');
 Route::middleware(['auth', RoleAdmin::class])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard'); // Pastikan view ini ada
     })->name('admin.dashboard');
 
-    Route::get('/review', [ReviewController::class, 'index'])->name('admin.review.index');
-    Route::post('/review/{id}/approve', [ReviewController::class, 'approve'])->name('admin.reviews.approve');
-    Route::delete('/review/{id}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
     Route::get('/destinasi', [DestinasiController::class, 'index'])->name('admin.destinasi.index');
 });
-
-Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('umkm', UmkmController::class);
-    Route::resource('umkm', UmkmController::class)->except(['show']);
-
-});
-
 
 
 Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');
@@ -97,12 +85,21 @@ Route::prefix('kategori')->name('admin.kategori.')->group(function () {
 
 Route::resource('destinasi', DestinasiController::class)->middleware(['auth', App\Http\Middleware\RoleAdmin::class]);
 
-
-Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])->group(function () {
-    Route::resource('umkm', UmkmController::class);
-});
-
-Route::prefix('admin')->middleware(['auth', \App\Http\Middleware\RoleAdmin::class])->group(function () {
+Route::prefix('admin')->middleware(['auth', RoleAdmin::class])->group(function () {
     Route::resource('event', EventController::class)->names('admin.event');
 });
 
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
+    Route::put('/review/{id}/status', [ReviewController::class, 'updateStatus'])->name('review.updateStatus');
+    Route::delete('/review/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+});
+
+Route::prefix('admin')->middleware(['auth', RoleAdmin::class])->name('admin.')->group(function () {
+    Route::get('/umkm', [UmkmController::class, 'index'])->name('umkm.index');
+});
+Route::get('/umkm', [UmkmPublicController::class, 'index'])->name('public.umkm.index');
+Route::get('/umkm/{id}', [UmkmPublicController::class, 'show'])->name('public.umkm.show');
+
+Route::get('/event', [EventPublicController::class, 'index'])->name('public.events.index');
+Route::get('/event/{id}', [EventPublicController::class, 'show'])->name('public.events.show');

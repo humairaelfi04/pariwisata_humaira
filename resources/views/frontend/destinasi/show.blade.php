@@ -24,8 +24,10 @@
 @endif
 
 <h4>Kirim Ulasan</h4>
-<form action="{{ route('review.store', $destinasi->id) }}" method="POST">
+<form action="{{ route('review.store') }}" method="POST">
     @csrf
+    <input type="hidden" name="destination_id" value="{{ $destinasi->id }}">
+
     <div class="mb-3">
         <label>Nama</label>
         <input type="text" name="nama_pengunjung" class="form-control" required>
@@ -44,6 +46,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Kirim Ulasan</button>
 </form>
+
 
 <h4 class="mt-5">Ulasan Pengunjung</h4>
 @forelse ($destinasi->reviews as $review)

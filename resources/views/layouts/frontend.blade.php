@@ -60,8 +60,8 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Destinasi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">UMKM</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Acara</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/umkm">UMKM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/event">Acara</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
                 </ul>
             </div>
