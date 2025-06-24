@@ -1,66 +1,88 @@
 @extends('layouts.admin')
 
+@section('title', 'Edit Destinasi')
+
 @section('content')
-<div class="container mx-auto p-4 max-w-xl">
-    <h1 class="text-xl font-bold mb-4">Edit Destinasi Wisata</h1>
+<div class="container py-4" style="max-width: 720px;">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h4 class="mb-3 fw-bold text-warning">Edit Destinasi Wisata</h4>
 
-    <form action="{{ route('destinasi.update', $destinasi->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+            <form action="{{ route('destinasi.update', $destinasi->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
 
-        <div class="mb-4">
-            <label class="block mb-1">Nama</label>
-            <input type="text" name="nama" value="{{ old('nama', $destinasi->nama ?? '') }}" class="w-full border rounded px-3 py-2">
+                {{-- Nama --}}
+                <div class="mb-3">
+                    <label class="form-label">Nama Destinasi</label>
+                    <input type="text" name="nama" value="{{ old('nama', $destinasi->nama) }}" class="form-control">
+                </div>
+
+                {{-- Deskripsi --}}
+                <div class="mb-3">
+                    <label class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi" rows="4" class="form-control">{{ old('deskripsi', $destinasi->deskripsi) }}</textarea>
+                </div>
+
+                {{-- Alamat --}}
+                <div class="mb-3">
+                    <label class="form-label">Alamat</label>
+                    <input type="text" name="alamat" value="{{ old('alamat', $destinasi->alamat) }}" class="form-control">
+                </div>
+
+                {{-- Harga Tiket --}}
+                <div class="mb-3">
+                    <label class="form-label">Harga Tiket</label>
+                    <input type="number" name="harga_tiket" step="0.01" value="{{ old('harga_tiket', $destinasi->harga_tiket) }}" class="form-control">
+                </div>
+
+                {{-- Jam Operasional --}}
+                <div class="mb-3">
+                    <label class="form-label">Jam Operasional</label>
+                    <input type="text" name="jam_operasional" value="{{ old('jam_operasional', $destinasi->jam_operasional) }}" class="form-control">
+                </div>
+
+                {{-- Status Publikasi --}}
+                <div class="mb-3">
+                    <label class="form-label">Status Publikasi</label>
+                    <select name="status_publikasi" class="form-select">
+                        <option value="draft" {{ old('status_publikasi', $destinasi->status_publikasi) == 'draft' ? 'selected' : '' }}>Draft</option>
+                        <option value="published" {{ old('status_publikasi', $destinasi->status_publikasi) == 'published' ? 'selected' : '' }}>Published</option>
+                    </select>
+                </div>
+
+                {{-- Kategori --}}
+                <div class="mb-3">
+                    <label class="form-label">Kategori</label>
+                    <select name="category_id" class="form-select">
+                        @foreach ($category as $kat)
+                            <option value="{{ $kat->id }}" {{ old('category_id', $destinasi->category_id) == $kat->id ? 'selected' : '' }}>
+                                {{ $kat->nama_kategori }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                {{-- Gambar --}}
+                <div class="mb-4">
+                    <label class="form-label">Gambar Utama</label>
+                    <input type="file" name="url_gambar_utama" class="form-control">
+                    @if (!empty($destinasi->url_gambar_utama))
+                        <div class="mt-2">
+                            <img src="{{ asset('storage/' . $destinasi->url_gambar_utama) }}" alt="Gambar" class="img-thumbnail" style="max-width: 200px;">
+                        </div>
+                    @endif
+                </div>
+
+                {{-- Tombol --}}
+                <div class="d-flex justify-content-between">
+                    <a href="{{ route('destinasi.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save"></i> Simpan Perubahan
+                    </button>
+                </div>
+            </form>
         </div>
-
-        <div class="mb-4">
-            <label class="block mb-1">Deskripsi</label>
-            <textarea name="deskripsi" class="w-full border rounded px-3 py-2">{{ old('deskripsi', $destinasi->deskripsi ?? '') }}</textarea>
-        </div>
-
-        <div class="mb-4">
-            <label class="block mb-1">Alamat</label>
-            <input type="text" name="alamat" value="{{ old('alamat', $destinasi->alamat ?? '') }}" class="w-full border rounded px-3 py-2">
-        </div>
-
-        <div class="mb-4">
-            <label class="block mb-1">Harga Tiket</label>
-            <input type="number" step="0.01" name="harga_tiket" value="{{ old('harga_tiket', $destinasi->harga_tiket ?? '') }}" class="w-full border rounded px-3 py-2">
-        </div>
-
-        <div class="mb-4">
-            <label class="block mb-1">Jam Operasional</label>
-            <input type="text" name="jam_operasional" value="{{ old('jam_operasional', $destinasi->jam_operasional ?? '') }}" class="w-full border rounded px-3 py-2">
-        </div>
-
-        <div class="mb-4">
-            <label class="block mb-1">Status Publikasi</label>
-            <select name="status_publikasi" class="w-full border rounded px-3 py-2">
-                <option value="draft" {{ old('status_publikasi', $destinasi->status_publikasi ?? '') == 'draft' ? 'selected' : '' }}>Draft</option>
-                <option value="published" {{ old('status_publikasi', $destinasi->status_publikasi ?? '') == 'published' ? 'selected' : '' }}>Published</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label class="block mb-1">Kategori</label>
-            <select name="category_id" class="w-full border rounded px-3 py-2">
-                @foreach($category as $kat)
-                    <option value="{{ $kat->id }}" {{ old('category_id', $destinasi->category_id ?? '') == $kat->id ? 'selected' : '' }}>
-                        {{ $kat->nama_kategori }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label class="block mb-1">Gambar Utama</label>
-            <input type="file" name="url_gambar_utama" class="w-full border rounded px-3 py-2">
-            @if (!empty($destinasi->url_gambar_utama))
-                <img src="{{ asset('storage/' . $destinasi->url_gambar_utama) }}" alt="Gambar" class="mt-2 w-32">
-            @endif
-        </div>
-
-        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">{{ $button }}</button>
-    </form>
+    </div>
 </div>
 @endsection

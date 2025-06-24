@@ -18,7 +18,7 @@ class Review extends Model
         'email_pengunjung',
         'rating',
         'komentar',
-        'status_moderasi'
+        //'status_moderasi'
     ];
 
     public function destination()

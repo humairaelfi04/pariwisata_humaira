@@ -1,47 +1,60 @@
 @extends('layouts.admin')
 
+@section('title', 'Manajemen Destinasi')
+
 @section('content')
-<div class="container mx-auto p-4">
-    <div class="flex justify-between items-center mb-4">
-        <h1 class="text-xl font-bold">Daftar Destinasi Wisata</h1>
-        <a href="{{ route('destinasi.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow">
-            + Tambah Destinasi
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-success">📍 Daftar Destinasi Wisata</h2>
+        <a href="{{ route('destinasi.create') }}" class="btn btn-success shadow-sm">
+            <i class="bi bi-plus-circle me-1"></i> Tambah Destinasi
         </a>
     </div>
 
     @if(session('success'))
-        <div class="bg-green-100 border border-green-300 text-green-800 px-4 py-2 rounded mb-4">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
     @if ($destinasi->count())
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="row g-4">
             @foreach ($destinasi as $item)
-                <div class="bg-white rounded shadow hover:shadow-lg transition p-4">
-                    @if ($item->url_gambar_utama)
-                        <img src="{{ asset('images/' . $item->url_gambar_utama) }}"
-                             alt="{{ $item->nama }}"
-                             class="w-full h-48 object-cover rounded mb-3">
-                    @endif
-                    <h2 class="text-lg font-semibold mb-1">{{ $item->nama }}</h2>
-                    <p class="text-sm text-gray-600 mb-2">{{ $item->alamat }}</p>
-
-                    <div class="flex justify-between text-sm mt-2">
-                        <a href="{{ route('destinasi.show', $item->id) }}" class="text-blue-500 hover:underline">Detail</a>
-                        <a href="{{ route('destinasi.edit', $item->id) }}" class="text-yellow-500 hover:underline">Edit</a>
-                        <form action="{{ route('destinasi.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin hapus destinasi ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline">Hapus</button>
-                        </form>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-0">
+                        @if ($item->url_gambar_utama)
+                            <img src="{{ asset('images/' . $item->url_gambar_utama) }}" class="card-img-top" alt="{{ $item->nama }}" style="height: 200px; object-fit: cover;">
+                        @endif
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-semibold text-success">{{ $item->nama }}</h5>
+                                <p class="card-text text-muted small mb-2">{{ $item->alamat }}</p>
+                                <span class="badge bg-secondary">{{ $item->category->nama_kategori ?? 'Tanpa Kategori' }}</span>
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between">
+                                <a href="{{ route('destinasi.show', $item->id) }}" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i> Detail
+                                </a>
+                                <a href="{{ route('destinasi.edit', $item->id) }}" class="btn btn-sm btn-outline-warning">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </a>
+                                <form action="{{ route('destinasi.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus destinasi ini?')" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i> Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
     @else
-        <div class="text-center text-gray-500 mt-8">
-            Belum ada destinasi wisata yang ditambahkan.
+        <div class="text-center text-muted mt-5">
+            <i class="bi bi-info-circle"></i> Belum ada destinasi wisata yang tersedia.
         </div>
     @endif
 </div>

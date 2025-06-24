@@ -10,11 +10,13 @@ use App\Http\Controllers\PariwisataController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\ReviewPublicController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\DestinasiController;
 use App\Http\Controllers\Public\UmkmPublicController;
 use App\Http\Controllers\Public\EventPublicController;
-use App\Http\Controllers\Public\ReviewPublicController;
+
+
 
 // Halaman utama (Frontend)
 
@@ -48,7 +50,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/destinasi/create', [FrontendController::class, 'create'])->name('destinasi.create')->middleware('auth');
 Route::get('/destinasi/{id}', [FrontendController::class, 'show'])->name('destinasi.show');
 
-Route::post('/review/store', [ReviewPublicController::class, 'store'])->name('review.store');
+//Route::post('/review/store', [ReviewPublicController::class, 'store'])->name('review.store');
 
 
 Route::middleware(['auth', RoleAdmin::class])->prefix('admin')->group(function () {
@@ -103,3 +105,17 @@ Route::get('/umkm/{id}', [UmkmPublicController::class, 'show'])->name('public.um
 
 Route::get('/event', [EventPublicController::class, 'index'])->name('public.events.index');
 Route::get('/event/{id}', [EventPublicController::class, 'show'])->name('public.events.show');
+
+Route::put('/review/{id}/status', [ReviewController::class, 'updateStatus'])->name('review.updateStatus');
+Route::post('/review', [ReviewPublicController::class, 'store'])->name('review.store')->middleware('auth');
+
+Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('umkm', UmkmController::class); // ini akan otomatis menyediakan:
+    // admin.umkm.index
+    // admin.umkm.create
+    // admin.umkm.store
+    // admin.umkm.edit
+    // admin.umkm.update
+    // admin.umkm.destroy
+    // admin.umkm.show
+});

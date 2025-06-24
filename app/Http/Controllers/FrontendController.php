@@ -30,8 +30,13 @@ class FrontendController extends Controller
 
     public function show($id)
     {
-        $destinasi = Destination::with('category') // atau nama relasi kategori yang kamu pakai
-                    ->findOrFail($id);
+        $destinasi = Destination::with([
+            'category',
+            'reviews' => function ($query) {
+                $query->where('status_moderasi', 'approved');
+            }
+        ])->findOrFail($id);
+
         return view('frontend.destinasi.show', compact('destinasi'));
     }
 }

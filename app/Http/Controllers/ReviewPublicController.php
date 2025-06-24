@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Public;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Review;
+use Illuminate\Http\Request;
 
 class ReviewPublicController extends Controller
 {
@@ -12,24 +11,21 @@ class ReviewPublicController extends Controller
     {
         $request->validate([
             'destination_id' => 'required|exists:humaira_destinations,id',
-            'nama_pengunjung' => 'required',
-            'email_pengunjung' => 'required|email',
+            'nama_pengunjung' => 'required|string|max:255',
+            'email_pengunjung' => 'required|email|max:255',
             'rating' => 'required|integer|min:1|max:5',
-            'komentar' => 'required',
+            'komentar' => 'required|string',
         ]);
 
         Review::create([
-            'humaira_destination_id' => $request->destination_id, // ✅ ganti ini
+            'humaira_destination_id' => $request->destination_id,
             'nama_pengunjung' => $request->nama_pengunjung,
             'email_pengunjung' => $request->email_pengunjung,
             'rating' => $request->rating,
             'komentar' => $request->komentar,
-            'status_moderasi' => 'pending',
         ]);
 
-
-        return back()->with('success', 'Ulasan berhasil dikirim!');
+        return redirect()->route('destinasi.show', $request->destination_id)
+            ->with('success', 'Ulasan berhasil dikirim');
     }
 }
-
-

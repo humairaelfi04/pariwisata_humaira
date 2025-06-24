@@ -2,27 +2,52 @@
 
 @section('content')
 <div class="container mt-4">
-    <h1>Detail UMKM</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0">Detail UMKM</h2>
+        <a href="{{ route('admin.umkm.index') }}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Kembali ke Daftar
+        </a>
+    </div>
 
-    <div class="card">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">{{ $umkm->nama_usaha }}</h5>
+        </div>
         <div class="card-body">
-            <h3 class="card-title">{{ $umkm->nama_usaha }}</h3>
+            <div class="mb-3">
+                <label class="fw-semibold">Deskripsi Layanan:</label>
+                <p class="text-muted mb-1">{{ $umkm->deskripsi_layanan }}</p>
+            </div>
 
-            <p><strong>Deskripsi Layanan:</strong> {{ $umkm->deskripsi_layanan }}</p>
-            <p><strong>Narahubung:</strong> {{ $umkm->narahubung }}</p>
-            <p><strong>Nomor Telepon:</strong> {{ $umkm->nomor_telepon }}</p>
-            <p><strong>Alamat:</strong> {{ $umkm->alamat_umkm }}</p>
+            <div class="mb-3">
+                <label class="fw-semibold">Narahubung:</label>
+                <p class="mb-1">{{ $umkm->narahubung }}</p>
+            </div>
 
-            @if(isset($umkm->status_persetujuan))
-                <p><strong>Status Persetujuan:</strong> {{ ucfirst($umkm->status_persetujuan) }}</p>
-            @endif
+            <div class="mb-3">
+                <label class="fw-semibold">Nomor Telepon:</label>
+                <p class="mb-1">{{ $umkm->nomor_telepon }}</p>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-semibold">Alamat:</label>
+                <p class="mb-1">{{ $umkm->alamat_umkm }}</p>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-semibold">Status Persetujuan:</label>
+                <span class="badge bg-{{ $umkm->status_persetujuan == 'approved' ? 'success' : ($umkm->status_persetujuan == 'pending' ? 'warning' : 'danger') }}">
+                    {{ ucfirst($umkm->status_persetujuan) }}
+                </span>
+            </div>
 
             @if($umkm->category)
-                <p><strong>Kategori:</strong> {{ $umkm->category->nama_kategori }}</p>
+                <div class="mb-3">
+                    <label class="fw-semibold">Kategori:</label>
+                    <span class="badge bg-primary">{{ $umkm->category->nama_kategori }}</span>
+                </div>
             @endif
         </div>
     </div>
-
-    <a href="{{ route('admin.umkm.index') }}" class="btn btn-secondary mt-3">Kembali ke Daftar UMKM</a>
 </div>
 @endsection

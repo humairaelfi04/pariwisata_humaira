@@ -31,7 +31,8 @@ class Destination extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'humaira_destination_id')->where('status_moderasi', 'disetujui');
+        return $this->hasMany(Review::class, 'humaira_destination_id');
     }
+
 
 }

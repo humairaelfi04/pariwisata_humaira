@@ -1,68 +1,115 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem Informasi Pariwisata</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">Explore Wisata</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Rekomendasi Wisata</title>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Beranda</a>
-            </li>
+    {{-- Bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-            @auth
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('pariwisata.create') }}">Input Wisata</a>
-              </li>
+    {{-- Font Poppins --}}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ Auth::user()->name }}
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">{{ Auth::user()->email }}</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li>
-                    <form action="/logout" method="post">
-                      @csrf
-                      <button type="submit" class="btn btn-link text-decoration-none text-dark">Logout</button>
-                    </form>
-                  </li>
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #245744;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #198754 !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #dff0e3 !important;
+        }
+
+        .dropdown-menu {
+            font-size: 14px;
+        }
+
+        footer {
+            background-color: #198754;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        main {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    {{-- Navbar --}}
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand fw-semibold" href="{{ url('/') }}">🌄 HumairaTour</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Destinasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/umkm">UMKM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/event">Acara</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
+
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                </li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button class="dropdown-item" type="submit">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endguest
                 </ul>
-              </li>
-            @else
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Login</a>
-              </li>
-            @endauth
-          </ul>
-
-          <form class="d-flex" role="search" method="GET" action="{{ route('pariwisata.search') }}">
-            <input class="form-control me-2" type="search" name="query" placeholder="Cari tempat wisata..." aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Cari</button>
-          </form>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <div class="container my-4">
-      @yield('content')
-    </div>
+    {{-- Content --}}
+    <main class="container">
+        @yield('content')
+    </main>
 
-    <footer class="bg-primary text-white text-center py-2">
-      &copy; 2025 Sistem Informasi Pariwisata - by Humaira Elfi Putri
+    {{-- Footer --}}
+    <footer>
+        <div class="container">
+            <p class="mb-0">© {{ date('Y') }} Sistem Informasi Pariwisata Humaira. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-  </body>
+    {{-- Bootstrap JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('scripts')
+</body>
 </html>

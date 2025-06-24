@@ -19,45 +19,68 @@
             <p><strong>Status:</strong> {{ $destinasi->status_publikasi }}</p>
         </div>
     </div>
+
     @if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-@endif
+        <div class="alert alert-success mt-3">{{ session('success') }}</div>
+    @endif
 
-<h4>Kirim Ulasan</h4>
-<form action="{{ route('review.store') }}" method="POST">
-    @csrf
-    <input type="hidden" name="destination_id" value="{{ $destinasi->id }}">
+    <h4 class="mt-5">Kirim Ulasan</h4>
 
-    <div class="mb-3">
-        <label>Nama</label>
-        <input type="text" name="nama_pengunjung" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name="email_pengunjung" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label>Rating (1 - 5)</label>
-        <input type="number" name="rating" min="1" max="5" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label>Komentar</label>
-        <textarea name="komentar" rows="3" class="form-control" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Kirim Ulasan</button>
-</form>
+    @if (!Auth::check())
+        <div class="alert alert-warning mt-2">
+            <small>Anda harus login terlebih dahulu untuk mengirim ulasan.</small>
+        </div>
+    @endif
 
+    <form action="{{ route('review.store') }}" method="POST">
+        @csrf
+        <input type="hidden" name="destination_id" value="{{ $destinasi->id }}">
 
-<h4 class="mt-5">Ulasan Pengunjung</h4>
-@forelse ($destinasi->reviews as $review)
-    <div class="border p-3 mb-2">
-        <strong>{{ $review->nama_pengunjung }}</strong> - Rating: {{ $review->rating }}/5<br>
-        <small>{{ $review->created_at->format('d M Y') }}</small>
-        <p>{{ $review->komentar }}</p>
-    </div>
-@empty
-    <p>Belum ada ulasan.</p>
-@endforelse
+        <div class="mb-3">
+            <label>Nama</label>
+            <input type="text" name="nama_pengunjung" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email_pengunjung" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Rating (1 - 5)</label>
+            <input type="number" name="rating" min="1" max="5" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Komentar</label>
+            <textarea name="komentar" rows="3" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-ulasan">Kirim Ulasan</button>
+    </form>
 
+    <h4 class="mt-5">Ulasan Pengunjung</h4>
+    @forelse ($destinasi->reviews as $review)
+        <div class="border p-3 mb-2">
+            <strong>{{ $review->nama_pengunjung }}</strong> - Rating: {{ $review->rating }}/5<br>
+            <small>{{ $review->created_at->format('d M Y') }}</small>
+            <p>{{ $review->komentar }}</p>
+        </div>
+    @empty
+        <p>Belum ada ulasan.</p>
+    @endforelse
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("form-ulasan");
+        const isLoggedIn = @json(Auth::check());
+
+        form.addEventListener("submit", function (e) {
+            if (!isLoggedIn) {
+                e.preventDefault();
+                alert("Silakan login terlebih dahulu untuk mengirim ulasan.");
+                window.location.href = "{{ route('login') }}";
+            }
+        });
+    });
+</script>
+@endpush
