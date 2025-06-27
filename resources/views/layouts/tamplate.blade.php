@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistem Rekomendasi Wisata</title>
 
     {{-- Bootstrap --}}
@@ -11,54 +11,97 @@
     {{-- Font Poppins --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
+    {{-- Font Awesome --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
     <style>
         * {
             font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #245744;
-            color: #333;
+            background-color: #fffdf9;
+            color: #3a3a3a;
         }
 
+        /* Navbar */
         .navbar {
-            background-color: #198754 !important;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
         }
 
-        .navbar-brand, .nav-link {
-            color: #ffffff !important;
+        .navbar-brand {
+            font-weight: 700;
+            color: #5c3d2e !important;
+        }
+
+        .nav-link {
+            color: #5c3d2e !important;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .nav-link:hover {
-            color: #dff0e3 !important;
+            color: #cf9b6b !important;
         }
 
         .dropdown-menu {
-            font-size: 14px;
+            border-radius: 10px;
+            padding: 0.5rem;
         }
 
-        footer {
-            background-color: #198754;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 14px;
-            color: #fff;
+        .dropdown-item {
+            border-radius: 8px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #fbe6d3;
+            color: #5c3d2e;
         }
 
         main {
-            padding-top: 30px;
-            padding-bottom: 30px;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        footer {
+            background-color: #fef2e9;
+            color: #5c3d2e;
+            padding: 2.5rem 0;
+        }
+
+        footer a {
+            color: #5c3d2e;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #a87147;
+            text-decoration: underline;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+
+            .nav-link {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
 <body>
 
     {{-- Navbar --}}
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-semibold" href="{{ url('/') }}">🌄 HumairaTour</a>
+            <a class="navbar-brand" href="{{ url('/') }}">🌄 HumairaTour</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -78,10 +121,8 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a>
-                                </li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                         @csrf
@@ -103,8 +144,9 @@
 
     {{-- Footer --}}
     <footer>
-        <div class="container">
-            <p class="mb-0">© {{ date('Y') }} Sistem Informasi Pariwisata Humaira. All rights reserved.</p>
+        <div class="container text-center">
+            <p class="mb-1 fw-semibold">Sistem Informasi Pariwisata Humaira</p>
+            <p class="footer-text">© {{ date('Y') }} Made with ❤️ in Indonesia.</p>
         </div>
     </footer>
 

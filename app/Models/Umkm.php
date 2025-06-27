@@ -18,8 +18,9 @@ class Umkm extends Model
         'narahubung',
         'nomor_telepon',
         'alamat_umkm',
-        //'status_persetujuan',
-        'category_id'
+        'url_gambar_umkm',        // ✅ tambahkan ini
+        //'status_persetujuan',     // opsional, jika ingin digunakan di detail
+        'category_id',
     ];
 
     public function category(): BelongsTo

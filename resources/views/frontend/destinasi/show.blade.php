@@ -1,70 +1,105 @@
 @extends('layouts.frontend')
 
 @section('content')
-<div class="container py-4">
-    <h2>{{ $destinasi->nama }}</h2>
+<div class="container py-5">
+    {{-- Detail Destinasi Wisata --}}
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5" style="background-color: #fff9f5;">
+        <div class="row g-0">
+            {{-- Gambar --}}
+            <div class="col-md-6">
+                @if ($destinasi->url_gambar_utama)
+                    <img src="{{ asset('images/' . $destinasi->url_gambar_utama) }}"
+                         class="img-fluid h-100 w-100"
+                         style="object-fit: cover;"
+                         alt="{{ $destinasi->nama }}">
+                @endif
+            </div>
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            @if ($destinasi->url_gambar_utama)
-                <img src="{{ asset('images/' . $destinasi->url_gambar_utama) }}" class="img-fluid rounded">
-            @endif
-        </div>
-        <div class="col-md-6">
-            <h5>Kategori: {{ $destinasi->category->nama_kategori }}</h5>
-            <p><strong>Alamat:</strong> {{ $destinasi->alamat }}</p>
-            <p><strong>Deskripsi:</strong><br>{{ $destinasi->deskripsi }}</p>
-            <p><strong>Harga Tiket:</strong> Rp {{ number_format($destinasi->harga_tiket, 0, ',', '.') }}</p>
-            <p><strong>Jam Operasional:</strong> {{ $destinasi->jam_operasional }}</p>
-            <p><strong>Status:</strong> {{ $destinasi->status_publikasi }}</p>
+            {{-- Informasi Detail --}}
+            <div class="col-md-6 p-4">
+                <h3 class="fw-bold text-secondary-emphasis mb-3">{{ $destinasi->nama }}</h3>
+
+                <p class="mb-3"><strong class="text-muted">Kategori:</strong><br>
+                    <span class="badge bg-dark text-white rounded-pill px-3 py-1">
+                        {{ $destinasi->category->nama_kategori ?? 'Tidak ada' }}
+                    </span>
+                </p>
+
+                <p class="mb-2"><strong class="text-muted">Alamat:</strong><br>{{ $destinasi->alamat }}</p>
+                <p class="mb-2"><strong class="text-muted">Harga Tiket:</strong><br>Rp {{ number_format($destinasi->harga_tiket, 0, ',', '.') }}</p>
+                <p class="mb-2"><strong class="text-muted">Jam Operasional:</strong><br>{{ $destinasi->jam_operasional }}</p>
+                <p class="mb-2"><strong class="text-muted">Status:</strong><br>{{ ucfirst($destinasi->status_publikasi) }}</p>
+                <p class="mb-2"><strong class="text-muted">Deskripsi:</strong><br>{{ $destinasi->deskripsi }}</p>
+
+                <a href="{{ route('destinasi.index') }}"
+                   class="btn rounded-pill mt-4 shadow-sm"
+                   style="background-color: #f5dbc4; color: #5c3d2e;">
+                    ← Kembali ke Daftar Destinasi
+                </a>
+            </div>
         </div>
     </div>
 
+    {{-- Notifikasi --}}
     @if (session('success'))
-        <div class="alert alert-success mt-3">{{ session('success') }}</div>
-    @endif
-
-    <h4 class="mt-5">Kirim Ulasan</h4>
-
-    @if (!Auth::check())
-        <div class="alert alert-warning mt-2">
-            <small>Anda harus login terlebih dahulu untuk mengirim ulasan.</small>
+        <div class="alert alert-success mt-4">
+            {{ session('success') }}
         </div>
     @endif
 
-    <form action="{{ route('review.store') }}" method="POST">
-        @csrf
-        <input type="hidden" name="destination_id" value="{{ $destinasi->id }}">
+    {{-- Form Ulasan --}}
+    <div class="mt-5">
+        <h4 class="fw-semibold">💬 Kirim Ulasan</h4>
 
-        <div class="mb-3">
-            <label>Nama</label>
-            <input type="text" name="nama_pengunjung" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label>Email</label>
-            <input type="email" name="email_pengunjung" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label>Rating (1 - 5)</label>
-            <input type="number" name="rating" min="1" max="5" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label>Komentar</label>
-            <textarea name="komentar" rows="3" class="form-control" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" id="submit-ulasan">Kirim Ulasan</button>
-    </form>
+        @guest
+            <div class="alert alert-warning mt-2">
+                <small>⚠️ Anda harus login terlebih dahulu untuk mengirim ulasan.
+                    <a href="{{ route('login') }}">Login sekarang</a>
+                </small>
+            </div>
+        @endguest
 
-    <h4 class="mt-5">Ulasan Pengunjung</h4>
-    @forelse ($destinasi->reviews as $review)
-        <div class="border p-3 mb-2">
-            <strong>{{ $review->nama_pengunjung }}</strong> - Rating: {{ $review->rating }}/5<br>
-            <small>{{ $review->created_at->format('d M Y') }}</small>
-            <p>{{ $review->komentar }}</p>
-        </div>
-    @empty
-        <p>Belum ada ulasan.</p>
-    @endforelse
+        <form id="form-ulasan" action="{{ route('review.store') }}" method="POST" class="border p-4 rounded shadow-sm bg-white mt-3">
+            @csrf
+            <input type="hidden" name="destination_id" value="{{ $destinasi->id }}">
+
+            <div class="mb-3">
+                <label class="form-label">Nama</label>
+                <input type="text" name="nama_pengunjung" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email_pengunjung" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rating (1 - 5)</label>
+                <input type="number" name="rating" min="1" max="5" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Komentar</label>
+                <textarea name="komentar" rows="3" class="form-control" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success px-4">Kirim Ulasan</button>
+        </form>
+    </div>
+
+    {{-- Ulasan Pengunjung --}}
+    <div class="mt-5">
+        <h4 class="fw-semibold">⭐ Ulasan Pengunjung</h4>
+        @forelse ($destinasi->reviews as $review)
+            <div class="border rounded p-3 mb-3 shadow-sm bg-light">
+                <div class="d-flex justify-content-between">
+                    <strong>{{ $review->nama_pengunjung }}</strong>
+                    <span class="text-warning fw-bold">Rating: {{ $review->rating }}/5</span>
+                </div>
+                <small class="text-muted">{{ $review->created_at->format('d M Y') }}</small>
+                <p class="mb-0 mt-2">{{ $review->komentar }}</p>
+            </div>
+        @empty
+            <p class="text-muted">Belum ada ulasan untuk destinasi ini.</p>
+        @endforelse
+    </div>
 </div>
 @endsection
 
@@ -74,13 +109,13 @@
         const form = document.getElementById("form-ulasan");
         const isLoggedIn = @json(Auth::check());
 
-        form.addEventListener("submit", function (e) {
-            if (!isLoggedIn) {
+        if (form && !isLoggedIn) {
+            form.addEventListener("submit", function (e) {
                 e.preventDefault();
                 alert("Silakan login terlebih dahulu untuk mengirim ulasan.");
                 window.location.href = "{{ route('login') }}";
-            }
-        });
+            });
+        }
     });
 </script>
 @endpush

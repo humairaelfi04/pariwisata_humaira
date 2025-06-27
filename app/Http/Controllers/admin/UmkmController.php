@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Umkm;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class UmkmController extends Controller
@@ -23,18 +24,26 @@ class UmkmController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
-            'nama_usaha' => 'required|string',
-            'deskripsi_layanan' => 'required|string',
-            'narahubung' => 'required|string',
-            'nomor_telepon' => 'required|string',
-            'alamat_umkm' => 'required|string',
-            //'status_persetujuan' => 'required|in:pending,approved,rejected',
-            'category_id' => 'required|exists:humaira_categories,id',
+            'nama_usaha'         => 'required|string',
+            'deskripsi_layanan'  => 'required|string',
+            'narahubung'         => 'required|string',
+            'nomor_telepon'      => 'required|string',
+            'alamat_umkm'        => 'required|string',
+            'category_id'        => 'required|exists:humaira_categories,id',
+            'url_gambar_umkm'    => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        Umkm::create($request->all());
+        $data = $request->all();
+
+        // Upload gambar jika ada
+        if ($request->hasFile('url_gambar_umkm')) {
+            $gambar = $request->file('url_gambar_umkm')->store('umkm', 'public');
+            $data['url_gambar_umkm'] = $gambar;
+        }
+
+        Umkm::create($data);
+
         return redirect()->route('admin.umkm.index')->with('success', 'UMKM berhasil ditambahkan.');
     }
 
@@ -50,16 +59,30 @@ class UmkmController extends Controller
         $umkm = Umkm::findOrFail($id);
 
         $request->validate([
-            'nama_usaha' => 'required|string',
-            'deskripsi_layanan' => 'required|string',
-            'narahubung' => 'required|string',
-            'nomor_telepon' => 'required|string',
-            'alamat_umkm' => 'required|string',
-            //'status_persetujuan' => 'required|in:pending,approved,rejected',
-            'category_id' => 'required|exists:humaira_categories,id',
+            'nama_usaha'         => 'required|string',
+            'deskripsi_layanan'  => 'required|string',
+            'narahubung'         => 'required|string',
+            'nomor_telepon'      => 'required|string',
+            'alamat_umkm'        => 'required|string',
+            'category_id'        => 'required|exists:humaira_categories,id',
+            'url_gambar_umkm'    => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $umkm->update($request->all());
+        $data = $request->all();
+
+        // Update gambar jika ada yang baru
+        if ($request->hasFile('url_gambar_umkm')) {
+            // Hapus gambar lama jika ada
+            if ($umkm->url_gambar_umkm && Storage::disk('public')->exists($umkm->url_gambar_umkm)) {
+                Storage::disk('public')->delete($umkm->url_gambar_umkm);
+            }
+
+            $gambar = $request->file('url_gambar_umkm')->store('umkm', 'public');
+            $data['url_gambar_umkm'] = $gambar;
+        }
+
+        $umkm->update($data);
+
         return redirect()->route('admin.umkm.index')->with('success', 'UMKM berhasil diperbarui.');
     }
 
@@ -69,11 +92,17 @@ class UmkmController extends Controller
         return view('admin.umkm.show', compact('umkm'));
     }
 
-
     public function destroy($id)
     {
         $umkm = Umkm::findOrFail($id);
+
+        // Hapus gambar jika ada
+        if ($umkm->url_gambar_umkm && Storage::disk('public')->exists($umkm->url_gambar_umkm)) {
+            Storage::disk('public')->delete($umkm->url_gambar_umkm);
+        }
+
         $umkm->delete();
+
         return redirect()->route('admin.umkm.index')->with('success', 'UMKM berhasil dihapus.');
     }
 }

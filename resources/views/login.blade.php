@@ -3,66 +3,88 @@
 @section('content')
 <style>
     body {
-        background-color: #245744;
+        background-color: #fefaf6;
         font-family: 'Poppins', sans-serif;
     }
+
     .login-wrapper {
         background-color: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
         overflow: hidden;
-        min-height: 500px; /* agar tampak seimbang */
+        min-height: 500px;
     }
+
+    .login-form {
+        padding: 2.5rem;
+    }
+
     .login-form h4 {
-        font-weight: 600;
+        font-weight: 700;
+        color: #5b3c2d;
     }
+
     .login-form label {
         font-size: 14px;
         font-weight: 500;
+        color: #5b3c2d;
     }
+
     .form-control:focus {
-        border-color: #198754;
+        border-color: #5b3c2d;
         box-shadow: none;
     }
+
     .btn-login {
-        background-color: #198754;
+        background-color: #5b3c2d;
         color: #fff;
         font-weight: 600;
+        border-radius: 8px;
     }
-    .btn-signup {
-        border: 1px solid #198754;
-        color: #198754;
-        font-weight: 600;
+
+    .btn-login:hover {
+        background-color: #4b2e22;
     }
+
     .social-login a {
         text-decoration: none;
-        margin: 0 5px;
-        color: #198754;
+        margin: 0 8px;
+        color: #5b3c2d;
         font-weight: 500;
+        font-size: 15px;
     }
+
     .img-col {
-        background-color: #f5dbc4;
+        background-color: #f7ebe2;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: auto;
         padding: 2rem;
     }
+
     .img-col img {
-        max-width: 80%;
+        max-width: 90%;
         height: auto;
+    }
+
+    @media (max-width: 768px) {
+        .login-wrapper {
+            flex-direction: column;
+        }
+
+        .img-col {
+            display: none;
+        }
     }
 </style>
 
-
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-lg-10 login-wrapper d-flex">
-
+        <div class="col-lg-10 d-flex login-wrapper flex-wrap">
             {{-- Left: Form --}}
-            <div class="col-md-6 p-5 login-form">
+            <div class="col-md-6 login-form">
                 <div class="mb-4">
-                    <h4 class="text-success">Sistem Rekomendasi Wisata</h4>
+                    <h4>Sistem Rekomendasi Wisata</h4>
                     <p class="mb-0 text-muted">Selamat datang kembali! Silakan login ke akun Anda.</p>
                 </div>
 
@@ -95,7 +117,6 @@
 
                     <div class="d-grid gap-2 mb-3">
                         <button type="submit" class="btn btn-login">Login</button>
-
                     </div>
 
                     <div class="text-center social-login mt-3">
@@ -108,7 +129,7 @@
             </div>
 
             {{-- Right: Image --}}
-            <div class="col-md-6 img-col d-flex align-items-center justify-content-center">
+            <div class="col-md-6 img-col">
                 <img src="{{ asset('images/travel-login.png') }}" alt="Travel Illustration">
             </div>
         </div>

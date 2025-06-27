@@ -97,9 +97,6 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::delete('/review/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
 });
 
-Route::prefix('admin')->middleware(['auth', RoleAdmin::class])->name('admin.')->group(function () {
-    Route::get('/umkm', [UmkmController::class, 'index'])->name('umkm.index');
-});
 Route::get('/umkm', [UmkmPublicController::class, 'index'])->name('public.umkm.index');
 Route::get('/umkm/{id}', [UmkmPublicController::class, 'show'])->name('public.umkm.show');
 
@@ -109,13 +106,11 @@ Route::get('/event/{id}', [EventPublicController::class, 'show'])->name('public.
 Route::put('/review/{id}/status', [ReviewController::class, 'updateStatus'])->name('review.updateStatus');
 Route::post('/review', [ReviewPublicController::class, 'store'])->name('review.store')->middleware('auth');
 
-Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('umkm', UmkmController::class); // ini akan otomatis menyediakan:
-    // admin.umkm.index
-    // admin.umkm.create
-    // admin.umkm.store
-    // admin.umkm.edit
-    // admin.umkm.update
-    // admin.umkm.destroy
-    // admin.umkm.show
-});
+
+Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('umkm', UmkmController::class);
+    });
+

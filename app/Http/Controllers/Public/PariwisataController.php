@@ -13,7 +13,7 @@ class PariwisataController extends Controller
 {
     public function homepage()
     {
-        $pariwisatas = Destination::latest()->paginate(6);
+        $pariwisatas = Destination::latest()->paginate(8);
         return view('homepage', compact('pariwisatas'));
     }
 

@@ -22,7 +22,7 @@ class FrontendController extends Controller
             $query->where('category_id', $request->category);
         }
 
-        $destinations = $query->latest()->paginate(6);
+        $destinations = $query->latest()->paginate(8);
         $categories = Category::where('jenis_kategori', 'destinasi')->get();
 
         return view('frontend.destinasi.index', compact('destinations', 'categories'));
