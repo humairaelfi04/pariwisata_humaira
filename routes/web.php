@@ -114,3 +114,6 @@ Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])
         Route::resource('umkm', UmkmController::class);
     });
 
+
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.store');

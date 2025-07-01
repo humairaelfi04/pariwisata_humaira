@@ -115,16 +115,24 @@
                         <a href="#" class="text-decoration-none text-success">Lupa password?</a>
                     </div>
 
+                    {{-- Tambahkan ini di dalam login-form bagian bawah form --}}
+
                     <div class="d-grid gap-2 mb-3">
                         <button type="submit" class="btn btn-login">Login</button>
                     </div>
 
-                    <div class="text-center social-login mt-3">
+                    <div class="text-center mt-2">
+                        <span class="text-muted">Belum punya akun?</span>
+                        <a href="{{ route('register') }}" class="fw-semibold text-decoration-none" style="color: #5b3c2d;">Daftar</a>
+                    </div>
+
+                    <div class="text-center social-login mt-4">
                         <p class="mb-1">Atau login dengan</p>
                         <a href="#">Facebook</a> |
                         <a href="#">LinkedIn</a> |
                         <a href="#">Google</a>
                     </div>
+
                 </form>
             </div>
 
