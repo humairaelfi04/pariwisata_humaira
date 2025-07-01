@@ -12,6 +12,8 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\ReviewPublicController;
 use App\Http\Controllers\Admin\KategoriController;
+
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DestinasiController;
 use App\Http\Controllers\Public\UmkmPublicController;
 use App\Http\Controllers\Public\EventPublicController;
@@ -121,3 +123,5 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.st
 Route::get('/tentang', function () {
     return view('tentang');
 })->name('tentang');
+
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

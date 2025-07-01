@@ -6,149 +6,143 @@
 <div class="container-fluid py-4">
     {{-- Header --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="fw-semibold text-dark mb-0">📊 Dashboard Admin</h4>
-        <select class="form-select form-select-sm w-auto">
-            <option>Last 30 days</option>
-            <option>Last 7 days</option>
-            <option>This month</option>
-        </select>
+        <h4 class="fw-semibold text-dark mb-0">🏞️ Dashboard Admin Pariwisata</h4>
     </div>
 
-    {{-- Overview Cards --}}
+    {{-- Info Cards --}}
     <div class="row g-4 mb-4">
+        {{-- Destinasi --}}
         <div class="col-md-3">
-            <div class="card bg-light border-0 shadow-sm rounded-4 p-3">
+            <div class="card bg-white shadow-sm border-0 rounded-4 p-3">
                 <div class="d-flex align-items-center mb-2">
-                    <div class="me-2">
-                        <i class="bi bi-currency-dollar fs-3 text-primary"></i>
-                    </div>
+                    <i class="bi bi-map fs-3 text-success me-3"></i>
                     <div>
-                        <p class="mb-1 text-muted small">Total Revenue</p>
-                        <h5 class="fw-bold mb-0">$53,009.89</h5>
+                        <p class="mb-1 text-muted small">Jumlah Destinasi</p>
+                        <h5 class="fw-bold mb-0">{{ $totalDestinasi }} Tempat</h5>
                     </div>
                 </div>
-                <small class="text-success">▲ 12% this month</small>
+                @if(($newDestinasi ?? 0) > 0)
+                    <small class="text-success">+{{ $newDestinasi }} destinasi baru</small>
+                @endif
             </div>
         </div>
+
+        {{-- UMKM --}}
         <div class="col-md-3">
-            <div class="card bg-light border-0 shadow-sm rounded-4 p-3">
+            <div class="card bg-white shadow-sm border-0 rounded-4 p-3">
                 <div class="d-flex align-items-center mb-2">
-                    <div class="me-2">
-                        <i class="bi bi-briefcase fs-3 text-danger"></i>
-                    </div>
+                    <i class="bi bi-shop fs-3 text-primary me-3"></i>
                     <div>
-                        <p class="mb-1 text-muted small">Projects</p>
-                        <h5 class="fw-bold mb-0">95 / 100</h5>
+                        <p class="mb-1 text-muted small">Jumlah UMKM</p>
+                        <h5 class="fw-bold mb-0">{{ $totalUmkm }} UMKM</h5>
                     </div>
                 </div>
-                <small class="text-danger">▼ 5% this month</small>
+                @if(($newUmkm ?? 0) > 0)
+                    <small class="text-primary">+{{ $newUmkm }} UMKM baru</small>
+                @endif
             </div>
         </div>
+
+        {{-- Acara --}}
         <div class="col-md-3">
-            <div class="card bg-light border-0 shadow-sm rounded-4 p-3">
+            <div class="card bg-white shadow-sm border-0 rounded-4 p-3">
                 <div class="d-flex align-items-center mb-2">
-                    <div class="me-2">
-                        <i class="bi bi-clock fs-3 text-info"></i>
-                    </div>
+                    <i class="bi bi-calendar-event fs-3 text-warning me-3"></i>
                     <div>
-                        <p class="mb-1 text-muted small">Time Spent</p>
-                        <h5 class="fw-bold mb-0">1022 / 1300 Hrs</h5>
+                        <p class="mb-1 text-muted small">Jumlah Acara</p>
+                        <h5 class="fw-bold mb-0">{{ $totalEvent }} Acara</h5>
                     </div>
                 </div>
-                <small class="text-muted">Updated 3h ago</small>
             </div>
         </div>
+
+        {{-- Review --}}
         <div class="col-md-3">
-            <div class="card bg-light border-0 shadow-sm rounded-4 p-3">
+            <div class="card bg-white shadow-sm border-0 rounded-4 p-3">
                 <div class="d-flex align-items-center mb-2">
-                    <div class="me-2">
-                        <i class="bi bi-people fs-3 text-warning"></i>
-                    </div>
+                    <i class="bi bi-chat-left-text fs-3 text-danger me-3"></i>
                     <div>
-                        <p class="mb-1 text-muted small">Resources</p>
-                        <h5 class="fw-bold mb-0">101 / 120</h5>
+                        <p class="mb-1 text-muted small">Jumlah Review</p>
+                        <h5 class="fw-bold mb-0">{{ $totalReview }} Ulasan</h5>
                     </div>
                 </div>
-                <small class="text-muted">All roles filled</small>
             </div>
         </div>
     </div>
 
-    {{-- Summary Table and Progress --}}
+    {{-- Tabel Event Terbaru dan Progress --}}
     <div class="row g-4">
-        {{-- Project Summary --}}
+        {{-- Tabel Event --}}
         <div class="col-lg-8">
             <div class="card shadow-sm border-0 rounded-4">
                 <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0 fw-semibold">Project Summary</h6>
-                    <div class="d-flex gap-2">
-                        <select class="form-select form-select-sm">
-                            <option>Project</option>
-                        </select>
-                        <select class="form-select form-select-sm">
-                            <option>Manager</option>
-                        </select>
-                        <select class="form-select form-select-sm">
-                            <option>Status</option>
-                        </select>
-                    </div>
+                    <h6 class="mb-0 fw-semibold">Daftar Acara Terbaru</h6>
+                    <a href="{{ route('admin.event.index') }}" class="btn btn-sm btn-outline-primary">Lihat Semua</a>
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-hover align-middle mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th>Project</th>
-                                <th>Manager</th>
-                                <th>Due</th>
+                                <th>Judul Acara</th>
+                                <th>Lokasi</th>
+                                <th>Tanggal</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Website Redesign</td>
-                                <td>Oni Prakash</td>
-                                <td>May 25, 2025</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                            </tr>
-                            <tr>
-                                <td>Media Branding</td>
-                                <td>Trendy Priya</td>
-                                <td>Jun 18, 2025</td>
-                                <td><span class="badge bg-warning text-dark">On Progress</span></td>
-                            </tr>
-                            <tr>
-                                <td>Travel App</td>
-                                <td>Matah Marnoy</td>
-                                <td>Jul 02, 2025</td>
-                                <td><span class="badge bg-danger">Delayed</span></td>
-                            </tr>
+                            @forelse ($latestEvents as $event)
+                                <tr>
+                                    <td>{{ $event->judul }}</td>
+                                    <td>{{ $event->lokasi }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($event->tanggal_mulai)->translatedFormat('d F Y') }}</td>
+                                    <td>
+                                        @php
+                                            $today = \Carbon\Carbon::today();
+                                            $start = \Carbon\Carbon::parse($event->tanggal_mulai);
+                                            $end = \Carbon\Carbon::parse($event->tanggal_berakhir);
+                                        @endphp
+
+                                        @if ($today->between($start, $end))
+                                            <span class="badge bg-warning text-dark">Sedang Berlangsung</span>
+                                        @elseif ($today->lt($start))
+                                            <span class="badge bg-success">Akan Datang</span>
+                                        @else
+                                            <span class="badge bg-secondary">Selesai</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Belum ada acara.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        {{-- Overall Progress --}}
+        {{-- Progress Moderasi Review --}}
         <div class="col-lg-4">
             <div class="card shadow-sm border-0 rounded-4 text-center p-4">
-                <h6 class="fw-semibold mb-3">Overall Progress</h6>
+                <h6 class="fw-semibold mb-3">Progress Moderasi Review</h6>
                 <div class="progress-circle position-relative mx-auto" style="width: 140px; height: 140px;">
                     <svg viewBox="0 0 36 36" class="circular-chart green" width="140" height="140">
                         <path class="circle-bg"
-                              d="M18 2.0845
-                                 a 15.9155 15.9155 0 0 1 0 31.831
-                                 a 15.9155 15.9155 0 0 1 0 -31.831"
-                              fill="none" stroke="#eee" stroke-width="2"/>
+                            d="M18 2.0845
+                               a 15.9155 15.9155 0 0 1 0 31.831
+                               a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none" stroke="#eee" stroke-width="2"/>
                         <path class="circle"
-                              stroke-dasharray="72, 100"
-                              d="M18 2.0845
-                                 a 15.9155 15.9155 0 0 1 0 31.831
-                                 a 15.9155 15.9155 0 0 1 0 -31.831"
-                              fill="none" stroke="#22c55e" stroke-width="2"/>
+                            stroke-dasharray="{{ $reviewProgress }}, 100"
+                            d="M18 2.0845
+                               a 15.9155 15.9155 0 0 1 0 31.831
+                               a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none" stroke="#0d6efd" stroke-width="2"/>
                     </svg>
                     <div class="position-absolute top-50 start-50 translate-middle">
-                        <span class="fw-bold fs-5">72%</span><br>
-                        <small class="text-muted">Completed</small>
+                        <span class="fw-bold fs-5">{{ $reviewProgress }}%</span><br>
+                        <small class="text-muted">Sudah Dimoderasi</small>
                     </div>
                 </div>
             </div>
