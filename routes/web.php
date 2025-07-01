@@ -117,3 +117,7 @@ Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+
+Route::get('/tentang', function () {
+    return view('tentang');
+})->name('tentang');

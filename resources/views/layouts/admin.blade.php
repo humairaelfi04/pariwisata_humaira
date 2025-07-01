@@ -9,62 +9,88 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<!-- Tambahkan ini di <head> layout admin -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
       color: #333;
+      margin: 0;
     }
 
     #wrapper {
       display: flex;
-      min-height: 100vh;
     }
 
     /* Sidebar */
     #sidebar-wrapper {
       width: 260px;
       background-color: #121212;
-      padding-top: 2rem;
+      padding: 1.5rem 1rem;
       display: flex;
       flex-direction: column;
+      height: 100vh;
+      position: fixed;
+      overflow-y: auto;
     }
 
-    .sidebar-heading {
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       color: #fff;
-      font-size: 1.4rem;
       font-weight: 600;
-      text-align: center;
-      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      justify-content: center;
+    }
+
+    .sidebar-brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     .sidebar-link {
-      color: #ddd;
-      padding: 12px 20px;
+      color: #cfcfcf;
+      padding: 12px 16px;
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
-      transition: 0.3s ease;
+      gap: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: background 0.3s ease;
+      font-size: 15px;
     }
 
-    .sidebar-link:hover,
+    .sidebar-link:hover {
+      background-color: #1f1f1f;
+      color: #ffae42;
+    }
+
     .sidebar-link.active {
-      background-color: #262626;
-      color: #ff9f43;
+      background-color: #272727;
+      color: #ffae42;
+      font-weight: 600;
     }
 
-    /* Content */
+    /* Page Content */
     #page-content-wrapper {
-      flex: 1;
+      margin-left: 260px;
+      width: calc(100% - 260px);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* Navbar */
     .navbar-custom {
       background-color: #fff;
       padding: 1rem 2rem;
@@ -102,24 +128,49 @@
       flex-grow: 1;
     }
 
+    /* Optional: Animation */
     .circular-chart .circle {
-    stroke-linecap: round;
-    animation: progress 1s ease-out forwards;
-    }
-    @keyframes progress {
-    0% {
-        stroke-dasharray: 0 100;
-    }
+      stroke-linecap: round;
+      animation: progress 1s ease-out forwards;
     }
 
+    @keyframes progress {
+      0% {
+        stroke-dasharray: 0 100;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #sidebar-wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+      }
+
+      #page-content-wrapper {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .sidebar-link {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
   <div id="wrapper">
-
     {{-- Sidebar --}}
     <div id="sidebar-wrapper">
-      <div class="sidebar-heading">HumairaTour</div>
+      <a href="{{ url('/') }}" class="sidebar-brand">
+        <img src="{{ asset('images/logo.jpg') }}" alt="Logo">
+        <span>MalalaWak</span>
+      </a>
+
       <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
         <i class="fa fa-home"></i> Dashboard
       </a>
@@ -140,7 +191,7 @@
       </a>
     </div>
 
-    {{-- Page Content --}}
+    {{-- Content --}}
     <div id="page-content-wrapper">
       <nav class="navbar-custom">
         <form class="d-flex">
@@ -160,7 +211,6 @@
         @yield('content')
       </div>
     </div>
-
   </div>
 
   {{-- JS --}}

@@ -210,7 +210,10 @@
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">🌄 HumairaTour</a>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url('/') }}">
+                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" width="36" height="36" class="rounded-circle">
+                <span>MalalaWak</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -219,7 +222,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Destinasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="/umkm">UMKM</a></li>
                     <li class="nav-item"><a class="nav-link" href="/event">Acara</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tentang">Tentang</a></li>
 
                     @guest
                         <li class="nav-item">
