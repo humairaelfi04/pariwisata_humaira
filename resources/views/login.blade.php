@@ -3,75 +3,131 @@
 @section('content')
 <style>
     body {
-        background-color: #fefaf6;
-        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        font-family: 'Inter', 'Poppins', sans-serif;
     }
 
     .login-wrapper {
-        background-color: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+        background: rgba(255,255,255,0.85);
+        border-radius: 24px;
+        box-shadow: 0 10px 32px 0 rgba(30,64,175,0.10), 0 2px 4px 0 rgba(30,64,175,0.08);
         overflow: hidden;
-        min-height: 500px;
+        min-height: 520px;
+        display: flex;
+        align-items: stretch;
+        backdrop-filter: blur(12px);
     }
 
     .login-form {
-        padding: 2.5rem;
+        padding: 2.5rem 2rem;
+        flex: 1 1 0%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .login-form h4 {
-        font-weight: 700;
-        color: #5b3c2d;
+        font-weight: 800;
+        color: #1e40af;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
     }
 
     .login-form label {
         font-size: 14px;
-        font-weight: 500;
-        color: #5b3c2d;
+        font-weight: 600;
+        color: #1e40af;
+        margin-bottom: 0.25rem;
+    }
+
+    .form-control {
+        border-radius: 12px;
+        border: 1.5px solid #dbeafe;
+        background: #f8fafc;
+        font-size: 15px;
+        padding-left: 2.5rem;
+        transition: border-color 0.2s;
     }
 
     .form-control:focus {
-        border-color: #5b3c2d;
-        box-shadow: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px #dbeafe;
+        background: #fff;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #60a5fa;
+        font-size: 1.1rem;
+    }
+
+    .input-group {
+        position: relative;
     }
 
     .btn-login {
-        background-color: #5b3c2d;
+        background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
         color: #fff;
-        font-weight: 600;
-        border-radius: 8px;
+        font-weight: 700;
+        border-radius: 12px;
+        border: none;
+        padding: 0.75rem 0;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 16px 0 rgba(30,64,175,0.10);
+        transition: background 0.2s, transform 0.2s;
+        text-transform: uppercase;
     }
 
     .btn-login:hover {
-        background-color: #4b2e22;
+        background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+        transform: translateY(-2px) scale(1.03);
     }
 
     .social-login a {
         text-decoration: none;
         margin: 0 8px;
-        color: #5b3c2d;
-        font-weight: 500;
-        font-size: 15px;
+        color: #1e40af;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: color 0.2s;
+    }
+
+    .social-login a:hover {
+        color: #3b82f6;
+        text-decoration: underline;
     }
 
     .img-col {
-        background-color: #f7ebe2;
+        background: linear-gradient(135deg, #1e40af 60%, #3b82f6 100%);
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 2rem;
+        flex: 1 1 0%;
+        min-width: 260px;
     }
 
     .img-col img {
         max-width: 90%;
         height: auto;
+        filter: drop-shadow(0 8px 32px #1e40af33);
+        border-radius: 18px;
+        animation: floating 3s ease-in-out infinite;
     }
 
-    @media (max-width: 768px) {
+    @keyframes floating {
+        0%, 100% { transform: translateY(0px);}
+        50% { transform: translateY(-12px);}
+    }
+
+    @media (max-width: 991px) {
         .login-wrapper {
             flex-direction: column;
         }
-
         .img-col {
             display: none;
         }
@@ -82,8 +138,8 @@
     <div class="row justify-content-center">
         <div class="col-lg-10 d-flex login-wrapper flex-wrap">
             {{-- Left: Form --}}
-            <div class="col-md-6 login-form">
-                <div class="mb-4">
+            <div class="login-form col-md-6">
+                <div class="mb-4 text-center">
                     <h4>Sistem Rekomendasi Wisata</h4>
                     <p class="mb-0 text-muted">Selamat datang kembali! Silakan login ke akun Anda.</p>
                 </div>
@@ -97,25 +153,25 @@
 
                 <form method="POST" action="/login">
                     @csrf
-                    <div class="mb-3">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" class="form-control" required placeholder="you@example.com">
+                    <div class="mb-3 input-group">
+                        <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                        <input type="email" name="email" id="email" class="form-control" required placeholder="you@example.com" autocomplete="username">
+                        <label for="email" class="visually-hidden">Email</label>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="password">Kata Sandi</label>
-                        <input type="password" name="password" id="password" class="form-control" required placeholder="********">
+                    <div class="mb-3 input-group">
+                        <span class="input-icon"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password" id="password" class="form-control" required placeholder="********" autocomplete="current-password">
+                        <label for="password" class="visually-hidden">Kata Sandi</label>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
-                            <input type="checkbox" id="remember" class="form-check-input">
-                            <label for="remember" class="form-check-label">Ingat saya</label>
+                            <input type="checkbox" id="remember" class="form-check-input" name="remember">
+                            <label for="remember" class="form-check-label" style="color:#1e40af;">Ingat saya</label>
                         </div>
-                        <a href="#" class="text-decoration-none text-success">Lupa password?</a>
+                        <a href="#" class="text-decoration-none" style="color:#3b82f6;">Lupa password?</a>
                     </div>
-
-                    {{-- Tambahkan ini di dalam login-form bagian bawah form --}}
 
                     <div class="d-grid gap-2 mb-3">
                         <button type="submit" class="btn btn-login">Login</button>
@@ -123,22 +179,21 @@
 
                     <div class="text-center mt-2">
                         <span class="text-muted">Belum punya akun?</span>
-                        <a href="{{ route('register') }}" class="fw-semibold text-decoration-none" style="color: #5b3c2d;">Daftar</a>
+                        <a href="{{ route('register') }}" class="fw-semibold text-decoration-none" style="color: #1e40af;">Daftar</a>
                     </div>
 
                     <div class="text-center social-login mt-4">
-                        <p class="mb-1">Atau login dengan</p>
-                        <a href="#">Facebook</a> |
-                        <a href="#">LinkedIn</a> |
-                        <a href="#">Google</a>
+                        <p class="mb-1 text-muted">Atau login dengan</p>
+                        <a href="#"><i class="fab fa-facebook-f me-1"></i>Facebook</a> |
+                        <a href="#"><i class="fab fa-linkedin-in me-1"></i>LinkedIn</a> |
+                        <a href="#"><i class="fab fa-google me-1"></i>Google</a>
                     </div>
-
                 </form>
             </div>
 
             {{-- Right: Image --}}
-            <div class="col-md-6 img-col">
-                <img src="{{ asset('images/travel-login.png') }}" alt="Travel Illustration">
+            <div class="img-col col-md-6">
+                <img src="{{ asset('images/logo.jpg') }}" alt="Travel Illustration">
             </div>
         </div>
     </div>
