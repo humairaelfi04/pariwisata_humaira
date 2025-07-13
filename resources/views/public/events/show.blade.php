@@ -31,9 +31,9 @@
                                      alt="Gambar Acara" class="img-fluid h-100 w-100"
                                      style="object-fit: cover; min-height: 400px; transition: transform 0.4s ease;">
                                 <!-- Overlay dengan gradient -->
-                                <div class="position-absolute top-0 start-0 w-100 h-100" 
+                                <div class="position-absolute top-0 start-0 w-100 h-100"
                                      style="background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1), rgba(210, 180, 140, 0.1));"></div>
-                                
+
                                 <!-- Status Badge -->
                                 <div class="position-absolute top-0 end-0 m-4">
                                     <span class="badge" style="background: rgba(255, 255, 255, 0.95); color: #8B4513; border-radius: 25px; padding: 10px 20px; font-size: 0.9rem; backdrop-filter: blur(10px);">
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-12">
                                 <div class="d-flex align-items-center p-3 rounded-3" style="background: linear-gradient(135deg, rgba(205, 133, 63, 0.05), rgba(210, 180, 140, 0.05));">
                                     <div class="bg-info rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px; background: linear-gradient(135deg, #CD853F, #D2B48C);">
@@ -102,7 +102,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-12">
                                 <div class="d-flex align-items-center p-3 rounded-3" style="background: linear-gradient(135deg, rgba(205, 133, 63, 0.05), rgba(210, 180, 140, 0.05));">
                                     <div class="bg-info rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px; background: linear-gradient(135deg, #CD853F, #D2B48C);">
@@ -122,10 +122,10 @@
                                style="font-weight: 600; border-width: 2px;">
                                 <i class="fas fa-arrow-left me-2"></i>Kembali ke Daftar Acara
                             </a>
-                            <button class="btn btn-primary btn-lg rounded-pill shadow-sm" 
+                            {{-- <button class="btn btn-primary btn-lg rounded-pill shadow-sm"
                                     style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; font-weight: 600;">
                                 <i class="fas fa-share-alt me-2"></i>Bagikan Event
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
                 </div>
