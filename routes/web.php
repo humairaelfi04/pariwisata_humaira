@@ -22,13 +22,13 @@ use App\Http\Controllers\Public\EventPublicController;
 
 // Halaman utama (Frontend)
 
-Route::get('/pariwisata/{id}', [PariwisataController::class, 'show'])->name('pariwisata.show');
+//Route::get('/pariwisata/{id}', [PariwisataController::class, 'show'])->name('pariwisata.show');
 
 // Form input tempat wisata (akses terbatas)
-Route::get('/create-pariwisata', [PariwisataController::class, 'create'])->name('pariwisata.create')->middleware('auth');
+//Route::get('/create-pariwisata', [PariwisataController::class, 'create'])->name('pariwisata.create')->middleware('auth');
 
 // Simpan data wisata (POST)
-Route::post('/pariwisata/store', [PariwisataController::class, 'store'])->name('pariwisata.store')->middleware('auth');
+//Route::post('/pariwisata/store', [PariwisataController::class, 'store'])->name('pariwisata.store')->middleware('auth');
 
 // Login dan Logout
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login')->middleware('guest');
@@ -36,11 +36,11 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Edit tempat wisata (akses terbatas admin)
-Route::get('/pariwisata/{id}/edit', [PariwisataController::class, 'edit'])->name('pariwisata.edit')->middleware('auth', RoleAdmin::class);
-Route::put('/pariwisata/{id}', [PariwisataController::class, 'update'])->name('pariwisata.update')->middleware('auth', RoleAdmin::class);
+//Route::get('/pariwisata/{id}/edit', [PariwisataController::class, 'edit'])->name('pariwisata.edit')->middleware('auth', RoleAdmin::class);
+//Route::put('/pariwisata/{id}', [PariwisataController::class, 'update'])->name('pariwisata.update')->middleware('auth', RoleAdmin::class);
 
 // Hapus data wisata
-Route::delete('/pariwisata/{id}', [PariwisataController::class, 'destroy'])->name('pariwisata.destroy')->middleware('auth');
+//Route::delete('/pariwisata/{id}', [PariwisataController::class, 'destroy'])->name('pariwisata.destroy')->middleware('auth');
 
 // Pencarian wisata
 Route::get('/search', [PariwisataController::class, 'search'])->name('pariwisata.search');
@@ -86,6 +86,9 @@ Route::prefix('kategori')->name('admin.kategori.')->group(function () {
     Route::delete('/{id}', [KategoriController::class, 'destroy'])->name('destroy');
 });
 
+Route::prefix('admin')->middleware(['auth', RoleAdmin::class])->name('admin.')->group(function () {
+    Route::resource('destinasi', DestinasiController::class);
+});
 
 Route::resource('destinasi', DestinasiController::class)->middleware(['auth', App\Http\Middleware\RoleAdmin::class]);
 
@@ -124,4 +127,9 @@ Route::get('/tentang', function () {
     return view('tentang');
 })->name('tentang');
 
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['auth', \App\Http\Middleware\RoleAdmin::class])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    });

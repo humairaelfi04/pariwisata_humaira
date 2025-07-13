@@ -36,7 +36,7 @@ class DestinasiController extends Controller
             'alamat' => 'required',
             'harga_tiket' => 'required|numeric',
             'jam_operasional' => 'required',
-            'status_publikasi' => 'required|in:published,draft',
+            //'status_publikasi' => 'required|in:published,draft',
             'category_id' => 'required|exists:humaira_categories,id',
             'url_gambar_utama' => 'nullable|image|max:2048',
         ]);
@@ -74,7 +74,7 @@ class DestinasiController extends Controller
             'alamat' => 'required',
             'harga_tiket' => 'required|numeric',
             'jam_operasional' => 'required',
-            'status_publikasi' => 'required|in:published,draft',
+            //'status_publikasi' => 'required|in:published,draft',
             'category_id' => 'required|exists:humaira_categories,id',
             'url_gambar_utama' => 'nullable|image|max:2048',
         ]);
@@ -112,6 +112,13 @@ class DestinasiController extends Controller
 
         return redirect()->route('destinasi.index')->with('success', 'Destinasi berhasil dihapus.');
     }
+
+    public function show($id)
+    {
+        $destinasi = \App\Models\Destination::findOrFail($id);
+        return view('admin.destinasi.show', compact('destinasi'));
+    }
+
 
 
 

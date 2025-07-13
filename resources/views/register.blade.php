@@ -3,13 +3,13 @@
 @section('content')
 <style>
     body {
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        background: linear-gradient(135deg, #F5F5DC 0%, #DEB887 100%);
         font-family: 'Inter', 'Poppins', sans-serif;
     }
     .register-card {
         background: rgba(255,255,255,0.88);
         border-radius: 24px;
-        box-shadow: 0 10px 32px 0 rgba(30,64,175,0.10), 0 2px 4px 0 rgba(30,64,175,0.08);
+        box-shadow: 0 10px 32px 0 rgba(139,69,19,0.10), 0 2px 4px 0 rgba(139,69,19,0.08);
         overflow: hidden;
         backdrop-filter: blur(12px);
         padding: 2.5rem 2rem 2rem 2rem;
@@ -22,7 +22,7 @@
     }
     .register-card h4 {
         font-weight: 800;
-        color: #1e40af;
+        color: #8B4513;
         letter-spacing: 1px;
         margin-bottom: 0.5rem;
     }
@@ -34,30 +34,30 @@
         left: 1rem;
         top: 50%;
         transform: translateY(-50%);
-        color: #60a5fa;
+        color: #CD853F;
         font-size: 1.1rem;
     }
     .form-control {
         border-radius: 12px;
-        border: 1.5px solid #dbeafe;
-        background: #f8fafc;
+        border: 1.5px solid #DEB887;
+        background: #F5F5DC;
         font-size: 15px;
         padding-left: 2.5rem;
         transition: border-color 0.2s;
     }
     .form-control:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 2px #dbeafe;
+        border-color: #A0522D;
+        box-shadow: 0 0 0 2px #DEB887;
         background: #fff;
     }
     .form-label {
         font-size: 14px;
         font-weight: 600;
-        color: #1e40af;
+        color: #8B4513;
         margin-bottom: 0.25rem;
     }
     .btn-register {
-        background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+        background: linear-gradient(90deg, #8B4513 0%, #A0522D 100%);
         color: #fff;
         font-weight: 700;
         border-radius: 12px;
@@ -65,23 +65,23 @@
         padding: 0.75rem 0;
         font-size: 1.1rem;
         letter-spacing: 1px;
-        box-shadow: 0 4px 16px 0 rgba(30,64,175,0.10);
+        box-shadow: 0 4px 16px 0 rgba(139,69,19,0.10);
         transition: background 0.2s, transform 0.2s;
         text-transform: uppercase;
         margin-top: 0.5rem;
     }
     .btn-register:hover {
-        background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+        background: linear-gradient(90deg, #A0522D 0%, #8B4513 100%);
         transform: translateY(-2px) scale(1.03);
     }
     .text-link {
-        color: #1e40af;
+        color: #8B4513;
         font-weight: 600;
         text-decoration: none;
         transition: color 0.2s;
     }
     .text-link:hover {
-        color: #3b82f6;
+        color: #A0522D;
         text-decoration: underline;
     }
     @media (max-width: 767px) {

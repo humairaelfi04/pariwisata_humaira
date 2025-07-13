@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->decimal('harga_tiket', 12, 2)->nullable();
             $table->string('jam_operasional')->nullable();
-            $table->enum('status_publikasi', ['published', 'draft'])->default('draft');
+            //$table->enum('status_publikasi', ['published', 'draft'])->default('draft');
             $table->string('url_gambar_utama')->nullable();
             $table->foreignId('category_id')->constrained('humaira_categories')->onDelete('cascade');
             $table->timestamps();

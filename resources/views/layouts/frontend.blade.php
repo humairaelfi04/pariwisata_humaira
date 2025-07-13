@@ -19,29 +19,29 @@
 
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-light: #3b82f6;
-            --primary-dark: #1e3a8a;
-            --primary-ultra: #1e1b4b;
-            --secondary: #0ea5e9;
-            --accent: #06b6d4;
-            --success: #059669;
-            --warning: #d97706;
-            --danger: #dc2626;
-            --info: #0891b2;
-            --text-dark: #0f172a;
-            --text-light: #475569;
-            --bg-light: #f1f5f9;
-            --bg-white: #ffffff;
-            --bg-blue-50: #eff6ff;
-            --bg-blue-100: #dbeafe;
-            --border-light: #e2e8f0;
-            --border-blue: #bfdbfe;
+            --primary: #8B4513;
+            --primary-light: #A0522D;
+            --primary-dark: #654321;
+            --primary-ultra: #3E2723;
+            --secondary: #D2691E;
+            --accent: #CD853F;
+            --success: #228B22;
+            --warning: #FF8C00;
+            --danger: #DC143C;
+            --info: #20B2AA;
+            --text-dark: #2F1B14;
+            --text-light: #5D4037;
+            --bg-light: #FDF5E6;
+            --bg-white: #FFFAF0;
+            --bg-cream-50: #FFF8DC;
+            --bg-cream-100: #F5F5DC;
+            --border-light: #DEB887;
+            --border-brown: #D2B48C;
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            --shadow-blue: 0 10px 15px -3px rgb(30 64 175 / 0.1), 0 4px 6px -4px rgb(30 64 175 / 0.1);
+            --shadow-brown: 0 10px 15px -3px rgb(139 69 19 / 0.1), 0 4px 6px -4px rgb(139 69 19 / 0.1);
         }
 
         * {
@@ -49,7 +49,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #F5DEB3 0%, #DEB887 100%);
             color: var(--text-dark);
             line-height: 1.6;
             min-height: 100vh;
@@ -62,7 +62,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--bg-blue-50);
+            background: var(--bg-cream-50);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -76,10 +76,10 @@
 
         /* Navbar */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-blue);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: var(--shadow-brown);
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -137,9 +137,9 @@
 
         .nav-link:hover {
             color: var(--primary) !important;
-            background: rgba(59, 130, 246, 0.08);
+            background: rgba(139, 69, 19, 0.08);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-brown);
         }
 
         .dropdown-menu {
@@ -148,9 +148,9 @@
             box-shadow: var(--shadow-xl);
             padding: 0.75rem;
             margin-top: 0.5rem;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(139, 69, 19, 0.1);
         }
 
         .dropdown-item {
@@ -176,7 +176,7 @@
             border-radius: 25px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-brown);
             position: relative;
             overflow: hidden;
         }
@@ -238,8 +238,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(14, 165, 233, 0.3) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 20%, rgba(210, 180, 140, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(205, 133, 63, 0.3) 0%, transparent 50%);
         }
 
         .hero-content {
@@ -253,7 +253,7 @@
             font-weight: 900;
             margin-bottom: 1.5rem;
             text-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #ffffff, #e0f2fe);
+            background: linear-gradient(135deg, #FFF8DC, #F5F5DC);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -275,15 +275,15 @@
             box-shadow: var(--shadow-lg);
             transition: all 0.4s ease;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(139, 69, 19, 0.1);
         }
 
         .card:hover {
             transform: translateY(-12px) scale(1.02);
             box-shadow: var(--shadow-xl);
-            border-color: rgba(59, 130, 246, 0.2);
+            border-color: rgba(139, 69, 19, 0.2);
         }
 
         .card-img-top {
@@ -319,7 +319,7 @@
             padding: 0.875rem 1.75rem;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-brown);
             position: relative;
             overflow: hidden;
         }
@@ -359,7 +359,7 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             transform: translateY(-3px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-brown);
             border-color: transparent;
         }
 
@@ -480,7 +480,7 @@
             font-weight: 600;
             color: var(--text-dark);
             background: var(--bg-white);
-            border: 2px solid var(--border-blue);
+            border: 2px solid var(--border-brown);
             box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
         }
@@ -490,7 +490,7 @@
             color: white;
             border-color: transparent;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-brown);
         }
 
         .page-item.active .page-link {
@@ -498,11 +498,11 @@
             border-color: transparent;
             color: white;
             font-weight: 700;
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-brown);
         }
 
         .page-item.disabled .page-link {
-            background: var(--bg-blue-50);
+            background: var(--bg-cream-50);
             color: var(--text-light);
             border-color: var(--border-light);
             opacity: 0.6;
@@ -616,11 +616,11 @@
 
         /* Glow effect */
         .glow {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 20px rgba(139, 69, 19, 0.3);
         }
 
         .glow:hover {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 30px rgba(139, 69, 19, 0.5);
         }
     </style>
 </head>
@@ -802,10 +802,10 @@
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 10px 30px rgba(30, 64, 175, 0.15)';
+                navbar.style.background = 'rgba(255, 250, 240, 0.98)';
+                navbar.style.boxShadow = '0 10px 30px rgba(139, 69, 19, 0.15)';
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.background = 'rgba(255, 250, 240, 0.95)';
                 navbar.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.1)';
             }
         });

@@ -3,7 +3,7 @@
 @section('content')
 <style>
     .about-hero {
-        background: linear-gradient(135deg, rgba(30, 64, 175, 0.9), rgba(59, 130, 246, 0.8), rgba(14, 165, 233, 0.7)), url('{{ asset('images/about-banner.jpg') }}') center/cover no-repeat;
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.8), rgba(210, 180, 140, 0.7)), url('{{ asset('images/about-banner.jpg') }}') center/cover no-repeat;
         color: #fff;
         text-align: center;
         padding: 150px 30px;
@@ -40,7 +40,7 @@
         text-shadow: 0 4px 8px rgba(0,0,0,0.3);
         position: relative;
         z-index: 2;
-        background: linear-gradient(135deg, #ffffff, #e0f2fe);
+        background: linear-gradient(135deg, #ffffff, #F5F5DC);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -60,7 +60,7 @@
         font-size: 1.5rem;
         font-style: italic;
         font-weight: 600;
-        color: #e0f2fe;
+        color: #F5F5DC;
         margin-top: 25px;
         animation: fadeInUp 2s ease-in-out;
         position: relative;
@@ -80,7 +80,7 @@
     }
 
     .about-section {
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #e0f2fe 100%);
+        background: linear-gradient(135deg, #F5F5DC 0%, #DEB887 50%, #D2B48C 100%);
         padding: 100px 0;
         position: relative;
         overflow: hidden;
@@ -93,14 +93,14 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle fill="rgba(59,130,246,0.03)" cx="200" cy="200" r="100"/><circle fill="rgba(30,64,175,0.02)" cx="800" cy="800" r="150"/></svg>');
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle fill="rgba(139,69,19,0.03)" cx="200" cy="200" r="100"/><circle fill="rgba(160,82,45,0.02)" cx="800" cy="800" r="150"/></svg>');
         background-size: cover;
     }
 
     .about-section h2 {
         font-size: 3rem;
         font-weight: 800;
-        background: linear-gradient(135deg, #1e40af, #3b82f6, #0ea5e9);
+        background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -114,9 +114,9 @@
         backdrop-filter: blur(25px);
         border-radius: 25px;
         padding: 50px 40px;
-        box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
+        box-shadow: 0 20px 60px rgba(139, 69, 19, 0.15);
         transition: all 0.4s ease;
-        border: 1px solid rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(139, 69, 19, 0.1);
         position: relative;
         overflow: hidden;
     }
@@ -128,26 +128,26 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #1e40af, #3b82f6, #0ea5e9);
+        background: linear-gradient(90deg, #8B4513, #A0522D, #CD853F);
     }
 
     .feature-box:hover {
         transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 30px 80px rgba(30, 64, 175, 0.25);
+        box-shadow: 0 30px 80px rgba(139, 69, 19, 0.25);
     }
 
     .feature-icon {
         font-size: 60px;
         margin-bottom: 30px;
-        background: linear-gradient(135deg, #1e40af, #3b82f6, #0ea5e9);
+        background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        filter: drop-shadow(0 4px 8px rgba(30, 64, 175, 0.2));
+        filter: drop-shadow(0 4px 8px rgba(139, 69, 19, 0.2));
     }
 
     .story-section {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
+        background: linear-gradient(135deg, #F5F5DC 0%, #DEB887 50%, #F8F8FF 100%);
         padding: 100px 0;
         position: relative;
         overflow: hidden;
@@ -160,7 +160,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(14,165,233,0.03)" points="0,1000 1000,0 1000,1000"/></svg>');
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(205,133,63,0.03)" points="0,1000 1000,0 1000,1000"/></svg>');
         background-size: cover;
     }
 
@@ -169,8 +169,8 @@
         backdrop-filter: blur(25px);
         border-radius: 25px;
         padding: 50px;
-        box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
-        border: 1px solid rgba(59, 130, 246, 0.1);
+        box-shadow: 0 20px 60px rgba(139, 69, 19, 0.15);
+        border: 1px solid rgba(139, 69, 19, 0.1);
         position: relative;
         overflow: hidden;
     }
@@ -182,11 +182,11 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #1e40af, #3b82f6, #0ea5e9);
+        background: linear-gradient(90deg, #8B4513, #A0522D, #CD853F);
     }
 
     .story-box h4 {
-        color: #1e40af;
+        color: #8B4513;
         font-weight: 800;
         font-size: 1.8rem;
         margin-bottom: 25px;
@@ -199,7 +199,7 @@
     }
 
     .text-primary {
-        color: #1e40af !important;
+        color: #8B4513 !important;
     }
 
     /* Modern animations */
@@ -210,13 +210,13 @@
     .object-fit-cover {
         object-fit: cover;
         border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+        box-shadow: 0 20px 60px rgba(139, 69, 19, 0.2);
         transition: all 0.4s ease;
     }
 
     .object-fit-cover:hover {
         transform: scale(1.05);
-        box-shadow: 0 30px 80px rgba(30, 64, 175, 0.3);
+        box-shadow: 0 30px 80px rgba(139, 69, 19, 0.3);
     }
 
     /* Enhanced floating animation */
@@ -241,12 +241,12 @@
 
     /* Modern glow effect */
     .glow {
-        box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+        box-shadow: 0 0 30px rgba(139, 69, 19, 0.2);
         transition: all 0.4s ease;
     }
 
     .glow:hover {
-        box-shadow: 0 0 50px rgba(59, 130, 246, 0.4);
+        box-shadow: 0 0 50px rgba(139, 69, 19, 0.4);
     }
 
     /* Responsive design */
@@ -337,7 +337,7 @@
                     <div class="feature-icon floating">
                         <i class="fas fa-globe-asia"></i>
                     </div>
-                    <h5 class="fw-bold mb-4" style="color: #1e40af; font-size: 1.5rem;">Visi</h5>
+                    <h5 class="fw-bold mb-4" style="color: #8B4513; font-size: 1.5rem;">Visi</h5>
                     <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">Menjadi platform terdepan dalam pengenalan destinasi wisata lokal dan pemberdayaan UMKM daerah.</p>
                 </div>
             </div>
@@ -346,7 +346,7 @@
                     <div class="feature-icon floating">
                         <i class="fas fa-bullseye"></i>
                     </div>
-                    <h5 class="fw-bold mb-4" style="color: #1e40af; font-size: 1.5rem;">Misi</h5>
+                    <h5 class="fw-bold mb-4" style="color: #8B4513; font-size: 1.5rem;">Misi</h5>
                     <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
                         1. Menyediakan informasi destinasi wisata yang akurat.<br>
                         2. Mendukung promosi UMKM lokal.<br>

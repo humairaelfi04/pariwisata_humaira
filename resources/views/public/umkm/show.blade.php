@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="card border-0 shadow-lg rounded-4 overflow-hidden" style="background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden" style="background: rgba(255, 250, 240, 0.97); backdrop-filter: blur(12px);">
         <div class="row g-0">
             {{-- Kolom Gambar --}}
             <div class="col-md-6 position-relative">
@@ -13,50 +13,50 @@
                             style="object-fit: cover; min-height: 350px; transition: transform 0.3s ease;">
                         <!-- Overlay -->
                         <div class="position-absolute top-0 start-0 w-100 h-100" 
-                             style="background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(59, 130, 246, 0.08));"></div>
+                             style="background: linear-gradient(135deg, rgba(139, 69, 19, 0.08), rgba(160, 82, 45, 0.08));"></div>
                         <!-- Kategori Badge -->
                         @if($umkm->category)
                             <div class="position-absolute top-0 start-0 m-3">
-                                <span class="badge" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; border-radius: 20px; padding: 8px 16px; font-size: 0.9rem;">
+                                <span class="badge" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border-radius: 20px; padding: 8px 16px; font-size: 0.9rem;">
                                     <i class="fas fa-tag me-1"></i>{{ $umkm->category->nama_kategori }}
                                 </span>
                             </div>
                         @endif
                     </div>
                 @else
-                    <div class="bg-light d-flex align-items-center justify-content-center h-100 rounded-start-4" style="min-height: 350px;">
-                        <span class="text-muted">Tidak ada gambar</span>
+                    <div class="bg-light d-flex align-items-center justify-content-center h-100 rounded-start-4" style="min-height: 350px; background: linear-gradient(135deg, #F5F5DC, #DEB887);">
+                        <span class="text-muted" style="color: #8B4513;">Tidak ada gambar</span>
                     </div>
                 @endif
             </div>
 
             {{-- Kolom Detail --}}
             <div class="col-md-6 p-5">
-                <h2 class="fw-bold mb-3" style="background: linear-gradient(135deg, #1e40af, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                <h2 class="fw-bold mb-3" style="background: linear-gradient(135deg, #8B4513, #A0522D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     {{ $umkm->nama_usaha }}
                 </h2>
 
                 <div class="mb-3">
-                    <strong class="text-muted">Kategori:</strong><br>
-                    <span class="badge" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; border-radius: 20px; padding: 8px 16px; font-size: 0.9rem;">
+                    <strong class="text-muted" style="color: #8B4513;">Kategori:</strong><br>
+                    <span class="badge" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border-radius: 20px; padding: 8px 16px; font-size: 0.9rem;">
                         {{ $umkm->category->nama_kategori ?? 'Tidak ada' }}
                     </span>
                 </div>
 
                 <div class="mb-3">
-                    <strong class="text-muted">Deskripsi:</strong><br>
-                    <span class="text-dark" style="line-height: 1.7;">{{ $umkm->deskripsi_layanan }}</span>
+                    <strong class="text-muted" style="color: #8B4513;">Deskripsi:</strong><br>
+                    <span class="text-dark" style="line-height: 1.7; color: #3E2723;">{{ $umkm->deskripsi_layanan }}</span>
                 </div>
                 <div class="mb-3">
-                    <strong class="text-muted">Alamat:</strong><br>
-                    <span class="text-dark">{{ $umkm->alamat_umkm }}</span>
+                    <strong class="text-muted" style="color: #8B4513;">Alamat:</strong><br>
+                    <span class="text-dark" style="color: #3E2723;">{{ $umkm->alamat_umkm }}</span>
                 </div>
                 <div class="mb-3">
-                    <strong class="text-muted">Kontak:</strong><br>
-                    <span class="text-dark">
-                        <i class="fas fa-user me-1" style="color: #1e40af;"></i>{{ $umkm->narahubung }}
+                    <strong class="text-muted" style="color: #8B4513;">Kontak:</strong><br>
+                    <span class="text-dark" style="color: #3E2723;">
+                        <i class="fas fa-user me-1" style="color: #8B4513;"></i>{{ $umkm->narahubung }}
                         <br>
-                        <i class="fas fa-phone me-1" style="color: #3b82f6;"></i>{{ $umkm->nomor_telepon }}
+                        <i class="fas fa-phone me-1" style="color: #A0522D;"></i>{{ $umkm->nomor_telepon }}
                     </span>
                 </div>
 
@@ -85,16 +85,16 @@
     transform: scale(1.08);
 }
 .btn-outline-primary {
-    border: 2px solid #1e40af;
-    color: #1e40af;
+    border: 2px solid #8B4513;
+    color: #8B4513;
     background: transparent;
     transition: all 0.3s ease;
 }
 .btn-outline-primary:hover {
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    background: linear-gradient(135deg, #8B4513, #A0522D);
     color: white;
     border-color: transparent;
-    box-shadow: 0 10px 25px rgba(30, 64, 175, 0.2);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.2);
 }
 @media (max-width: 768px) {
     .p-5 {

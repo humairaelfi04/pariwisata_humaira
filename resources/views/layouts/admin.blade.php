@@ -16,16 +16,16 @@
 
   <style>
     :root {
-      --primary: #1e40af;
-      --primary-dark: #1e3a8a;
-      --primary-light: #3b82f6;
-      --secondary: #f59e0b;
+      --primary: #8B4513;
+      --primary-dark: #654321;
+      --primary-light: #A0522D;
+      --secondary: #CD853F;
       --success: #10b981;
       --danger: #ef4444;
       --warning: #f59e0b;
-      --info: #3b82f6;
+      --info: #CD853F;
       --dark: #1f2937;
-      --light: #f8fafc;
+      --light: #F5F5DC;
       --white: #ffffff;
       --gray-50: #f9fafb;
       --gray-100: #f3f4f6;
@@ -52,7 +52,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      background: linear-gradient(135deg, #F5F5DC 0%, #DEB887 100%);
       color: var(--gray-800);
       margin: 0;
       min-height: 100vh;
@@ -95,7 +95,7 @@
       overflow-y: auto;
       box-shadow: var(--shadow-2xl);
       z-index: 1000;
-      border-right: 1.5px solid #dbeafe;
+      border-right: 1.5px solid #DEB887;
       transition: all 0.3s cubic-bezier(.4,2.2,.2,1);
     }
 
@@ -110,13 +110,13 @@
       text-decoration: none;
       padding: 1rem;
       border-radius: 16px;
-      background: rgba(30, 64, 175, 0.07);
+      background: rgba(139, 69, 19, 0.07);
       box-shadow: var(--shadow-md);
       transition: all 0.3s;
     }
 
     .sidebar-brand:hover {
-      background: linear-gradient(90deg, #1e40af11 0%, #3b82f611 100%);
+      background: linear-gradient(90deg, #8B451311 0%, #A0522D11 100%);
       transform: scale(1.04);
       color: var(--primary-dark);
     }
@@ -174,14 +174,14 @@
       top: 0;
       height: 100%;
       width: 0;
-      background: linear-gradient(90deg, #1e40af22 0%, #3b82f622 100%);
+      background: linear-gradient(90deg, #8B451322 0%, #A0522D22 100%);
       transition: width 0.3s;
       z-index: -1;
     }
 
     .sidebar-link:hover, .sidebar-link.active {
       color: var(--primary);
-      background: rgba(30, 64, 175, 0.08);
+      background: rgba(139, 69, 19, 0.08);
       transform: translateX(5px) scale(1.03);
       box-shadow: var(--shadow-md);
     }
@@ -214,7 +214,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1.5px solid #dbeafe;
+      border-bottom: 1.5px solid #DEB887;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -229,9 +229,9 @@
     .search-box {
       width: 100%;
       padding: 0.75rem 1rem 0.75rem 3rem;
-      border: 2px solid #dbeafe;
+      border: 2px solid #DEB887;
       border-radius: 25px;
-      background: #f8fafc;
+      background: #F5F5DC;
       transition: all 0.3s;
       font-size: 1rem;
     }
@@ -240,7 +240,7 @@
       outline: none;
       border-color: var(--primary);
       background: #fff;
-      box-shadow: 0 0 0 3px #dbeafe;
+      box-shadow: 0 0 0 3px #DEB887;
     }
 
     .search-icon {
@@ -248,7 +248,7 @@
       left: 1rem;
       top: 50%;
       transform: translateY(-50%);
-      color: #60a5fa;
+      color: #CD853F;
       font-size: 1.1rem;
     }
 
@@ -259,7 +259,7 @@
       padding: 0.75rem 1.25rem;
       background: var(--glass-bg);
       border-radius: 25px;
-      border: 2px solid #dbeafe;
+      border: 2px solid #DEB887;
       transition: all 0.3s;
       box-shadow: var(--shadow-sm);
     }
@@ -325,7 +325,7 @@
       backdrop-filter: var(--glass-blur);
       border-radius: 18px;
       box-shadow: var(--shadow-lg);
-      border: 1.5px solid #dbeafe;
+      border: 1.5px solid #DEB887;
       transition: all 0.3s;
     }
 
@@ -409,7 +409,7 @@
     }
 
     .table tbody tr:hover {
-      background: rgba(30, 64, 175, 0.05);
+      background: rgba(139, 69, 19, 0.05);
     }
 
     /* Status Badges */
@@ -436,7 +436,7 @@
     }
 
     .badge-info {
-      background: linear-gradient(135deg, var(--info), #2563eb);
+      background: linear-gradient(135deg, var(--info), #CD853F);
       color: var(--white);
     }
 
@@ -625,7 +625,7 @@
               <p class="admin-name">{{ Auth::user()->name ?? 'Administrator' }}</p>
               <p class="admin-role">Super Admin</p>
             </div>
-            <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name ?? 'Admin' }}&background=1e40af&color=fff&size=128" class="admin-avatar" alt="Admin">
+            <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name ?? 'Admin' }}&background=8B4513&color=fff&size=128" class="admin-avatar" alt="Admin">
           </div>
           <form action="{{ route('logout') }}" method="POST" class="d-inline">
             @csrf

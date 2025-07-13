@@ -19,7 +19,7 @@ class Destination extends Model
         'alamat',
         'harga_tiket',
         'jam_operasional',
-        'status_publikasi',
+        //'status_publikasi',
         'url_gambar_utama',
         'category_id'
     ];

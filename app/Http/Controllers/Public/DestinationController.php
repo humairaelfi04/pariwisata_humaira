@@ -29,7 +29,7 @@ class DestinationController extends Controller
             'alamat' => 'required',
             'harga_tiket' => 'nullable|numeric',
             'jam_operasional' => 'nullable',
-            'status_publikasi' => 'required|in:published,draft',
+            //'status_publikasi' => 'required|in:published,draft',
             'category_id' => 'required|exists:humaira_categories,id',
             'url_gambar_utama' => 'nullable|image|max:2048',
         ]);

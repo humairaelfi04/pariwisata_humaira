@@ -6,12 +6,12 @@
     <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('home') }}" style="color: #1e40af; text-decoration: none;">
+                <a href="{{ route('home') }}" style="color: #8B4513; text-decoration: none;">
                     <i class="fas fa-home me-1"></i>Beranda
                 </a>
             </li>
             <li class="breadcrumb-item">
-                <a href="{{ route('destinasi.index') }}" style="color: #1e40af; text-decoration: none;">
+                <a href="{{ route('destinasi.index') }}" style="color: #8B4513; text-decoration: none;">
                     Destinasi
                 </a>
             </li>
@@ -20,7 +20,7 @@
     </nav>
 
     {{-- Detail Destinasi Wisata --}}
-    <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5" data-aos="fade-up" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5" data-aos="fade-up" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px);">
         <div class="row g-0">
             {{-- Gambar --}}
             <div class="col-md-6 position-relative">
@@ -33,12 +33,12 @@
                         
                         <!-- Overlay with gradient -->
                         <div class="position-absolute top-0 start-0 w-100 h-100" 
-                             style="background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.1));"></div>
+                             style="background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1));"></div>
                         
                         <!-- Category Badge -->
                         @if($destinasi->category)
                             <div class="position-absolute top-0 start-0 m-4">
-                                <span class="badge" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; border-radius: 20px; padding: 10px 20px; font-size: 0.9rem;">
+                                <span class="badge" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border-radius: 20px; padding: 10px 20px; font-size: 0.9rem;">
                                     <i class="fas fa-tag me-1"></i>{{ $destinasi->category->nama_kategori }}
                                 </span>
                             </div>
@@ -46,7 +46,7 @@
 
                         <!-- Status Badge -->
                         <div class="position-absolute top-0 end-0 m-4">
-                            <span class="badge" style="background: rgba(255, 255, 255, 0.9); color: #1e40af; border-radius: 20px; padding: 10px 20px; font-size: 0.9rem;">
+                            <span class="badge" style="background: rgba(255, 250, 240, 0.9); color: #8B4513; border-radius: 20px; padding: 10px 20px; font-size: 0.9rem;">
                                 <i class="fas fa-check-circle me-1"></i>{{ ucfirst($destinasi->status_publikasi) }}
                             </span>
                         </div>
@@ -56,56 +56,56 @@
 
             {{-- Informasi Detail --}}
             <div class="col-md-6 p-5">
-                <h2 class="fw-bold mb-4" style="background: linear-gradient(135deg, #1e40af, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                <h2 class="fw-bold mb-4" style="background: linear-gradient(135deg, #8B4513, #A0522D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     {{ $destinasi->nama }}
                 </h2>
 
                 <div class="row g-4 mb-4">
                     <div class="col-12">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #1e40af, #3b82f6);">
+                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #8B4513, #A0522D);">
                                 <i class="fas fa-map-marker-alt text-white"></i>
                             </div>
                             <div>
                                 <small class="text-muted d-block">Alamat</small>
-                                <strong style="color: #1e293b;">{{ $destinasi->alamat }}</strong>
+                                <strong style="color: #3E2723;">{{ $destinasi->alamat }}</strong>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-6">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #059669, #10b981);">
+                            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #228B22, #32CD32);">
                                 <i class="fas fa-ticket-alt text-white"></i>
                             </div>
                             <div>
                                 <small class="text-muted d-block">Harga Tiket</small>
-                                <strong style="color: #1e293b;">Rp {{ number_format($destinasi->harga_tiket, 0, ',', '.') }}</strong>
+                                <strong style="color: #3E2723;">Rp {{ number_format($destinasi->harga_tiket, 0, ',', '.') }}</strong>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-6">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #d97706, #f59e0b);">
+                            <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #D2691E, #FF8C00);">
                                 <i class="fas fa-clock text-white"></i>
                             </div>
                             <div>
                                 <small class="text-muted d-block">Jam Operasional</small>
-                                <strong style="color: #1e293b;">{{ $destinasi->jam_operasional }}</strong>
+                                <strong style="color: #3E2723;">{{ $destinasi->jam_operasional }}</strong>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <h5 class="fw-bold mb-3" style="color: #1e40af;">
+                    <h5 class="fw-bold mb-3" style="color: #8B4513;">
                         <i class="fas fa-info-circle me-2"></i>Deskripsi
                     </h5>
                     <p class="text-muted" style="line-height: 1.8;">{{ $destinasi->deskripsi }}</p>
                 </div>
 
-                <a href="{{ route('destinasi.index') }}"
+                <a href="{{ route('home') }}"
                    class="btn btn-outline-primary btn-lg rounded-pill shadow-sm">
                     <i class="fas fa-arrow-left me-2"></i>Kembali ke Daftar Destinasi
                 </a>
@@ -115,14 +115,14 @@
 
     {{-- Notifikasi --}}
     @if (session('success'))
-        <div class="alert alert-success border-0 shadow-sm rounded-3 mb-4" data-aos="fade-up" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-left: 4px solid #059669;">
+        <div class="alert alert-success border-0 shadow-sm rounded-3 mb-4" data-aos="fade-up" style="background: linear-gradient(135deg, #F0FFF0, #98FB98); border-left: 4px solid #228B22;">
             <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
         </div>
     @endif
 
     {{-- Form Ulasan --}}
-    <div class="card border-0 shadow-lg rounded-4 mb-5" data-aos="fade-up" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);">
-        <div class="card-header border-0" style="background: linear-gradient(135deg, #1e40af, #3b82f6); border-radius: 20px 20px 0 0;">
+    <div class="card border-0 shadow-lg rounded-4 mb-5" data-aos="fade-up" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px);">
+        <div class="card-header border-0" style="background: linear-gradient(135deg, #8B4513, #A0522D); border-radius: 20px 20px 0 0;">
             <h4 class="text-white fw-bold mb-0">
                 <i class="fas fa-comment-dots me-2"></i>Kirim Ulasan
             </h4>
@@ -130,7 +130,7 @@
         <div class="card-body p-4">
 
             @guest
-                <div class="alert alert-warning border-0 rounded-3 mb-4" style="background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #d97706;">
+                <div class="alert alert-warning border-0 rounded-3 mb-4" style="background: linear-gradient(135deg, #FFF8DC, #F5DEB3); border-left: 4px solid #D2691E;">
                     <i class="fas fa-exclamation-triangle me-2"></i>
                     Anda harus login terlebih dahulu untuk mengirim ulasan.
                     <a href="{{ route('login') }}" class="btn btn-sm btn-warning ms-2 rounded-pill">
@@ -144,27 +144,27 @@
                 <input type="hidden" name="destination_id" value="{{ $destinasi->id }}">
 
                 <div class="col-md-6">
-                    <label class="form-label fw-semibold" style="color: #1e40af;">
+                    <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-user me-1"></i>Nama
                     </label>
                     <input type="text" name="nama_pengunjung" class="form-control form-control-lg" 
-                           style="border: 2px solid #e5e7eb; border-radius: 12px;" required>
+                           style="border: 2px solid #DEB887; border-radius: 12px;" required>
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label fw-semibold" style="color: #1e40af;">
+                    <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-envelope me-1"></i>Email
                     </label>
                     <input type="email" name="email_pengunjung" class="form-control form-control-lg" 
-                           style="border: 2px solid #e5e7eb; border-radius: 12px;" required>
+                           style="border: 2px solid #DEB887; border-radius: 12px;" required>
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label fw-semibold" style="color: #1e40af;">
+                    <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-star me-1"></i>Rating
                     </label>
                     <select name="rating" class="form-select form-select-lg" 
-                            style="border: 2px solid #e5e7eb; border-radius: 12px;" required>
+                            style="border: 2px solid #DEB887; border-radius: 12px;" required>
                         <option value="">Pilih rating</option>
                         <option value="5">⭐⭐⭐⭐⭐ (5) - Sangat Baik</option>
                         <option value="4">⭐⭐⭐⭐ (4) - Baik</option>
@@ -175,17 +175,17 @@
                 </div>
 
                 <div class="col-12">
-                    <label class="form-label fw-semibold" style="color: #1e40af;">
+                    <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-comment me-1"></i>Komentar
                     </label>
                     <textarea name="komentar" rows="4" class="form-control" 
-                              style="border: 2px solid #e5e7eb; border-radius: 12px;" 
+                              style="border: 2px solid #DEB887; border-radius: 12px;" 
                               placeholder="Bagikan pengalaman Anda tentang destinasi ini..." required></textarea>
                 </div>
 
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow-sm" 
-                            style="background: linear-gradient(135deg, #1e40af, #3b82f6); border: none; padding: 12px 30px;">
+                            style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; padding: 12px 30px;">
                         <i class="fas fa-paper-plane me-2"></i>Kirim Ulasan
                     </button>
                 </div>
@@ -194,8 +194,8 @@
     </div>
 
     {{-- Ulasan Pengunjung --}}
-    <div class="card border-0 shadow-lg rounded-4" data-aos="fade-up" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);">
-        <div class="card-header border-0" style="background: linear-gradient(135deg, #0ea5e9, #06b6d4); border-radius: 20px 20px 0 0;">
+    <div class="card border-0 shadow-lg rounded-4" data-aos="fade-up" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px);">
+        <div class="card-header border-0" style="background: linear-gradient(135deg, #D2691E, #CD853F); border-radius: 20px 20px 0 0;">
             <h4 class="text-white fw-bold mb-0">
                 <i class="fas fa-star me-2"></i>Ulasan Pengunjung
                 <span class="badge bg-light text-dark ms-2 rounded-pill">{{ $destinasi->reviews->count() }} ulasan</span>
@@ -204,11 +204,11 @@
         <div class="card-body p-4">
             @forelse ($destinasi->reviews as $review)
                 <div class="border-0 rounded-3 p-4 mb-3 shadow-sm" 
-                     style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-left: 4px solid #0ea5e9;">
+                     style="background: linear-gradient(135deg, #FFF8DC, #F5F5DC); border-left: 4px solid #D2691E;">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
-                            <h6 class="fw-bold mb-1" style="color: #1e293b;">
-                                <i class="fas fa-user-circle me-2" style="color: #0ea5e9;"></i>{{ $review->nama_pengunjung }}
+                            <h6 class="fw-bold mb-1" style="color: #3E2723;">
+                                <i class="fas fa-user-circle me-2" style="color: #D2691E;"></i>{{ $review->nama_pengunjung }}
                             </h6>
                             <small class="text-muted">
                                 <i class="fas fa-calendar me-1"></i>{{ $review->created_at->format('d M Y H:i') }}
@@ -220,17 +220,17 @@
                                     <i class="fas fa-star {{ $i <= $review->rating ? 'text-warning' : 'text-muted' }}"></i>
                                 @endfor
                             </div>
-                            <span class="badge" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border-radius: 20px;">
+                            <span class="badge" style="background: linear-gradient(135deg, #D2691E, #CD853F); color: white; border-radius: 20px;">
                                 {{ $review->rating }}/5
                             </span>
                         </div>
                     </div>
-                    <p class="mb-0" style="color: #374151; line-height: 1.6;">{{ $review->komentar }}</p>
+                    <p class="mb-0" style="color: #5D4037; line-height: 1.6;">{{ $review->komentar }}</p>
                 </div>
             @empty
                 <div class="text-center py-5">
-                    <i class="fas fa-comments fa-3x mb-3" style="color: #6b7280;"></i>
-                    <h5 class="fw-bold mb-2" style="color: #1e293b;">Belum ada ulasan</h5>
+                    <i class="fas fa-comments fa-3x mb-3" style="color: #8B4513;"></i>
+                    <h5 class="fw-bold mb-2" style="color: #3E2723;">Belum ada ulasan</h5>
                     <p class="text-muted mb-0">Jadilah yang pertama memberikan ulasan untuk destinasi ini!</p>
                 </div>
             @endforelse
@@ -247,13 +247,13 @@
 
 .form-control:focus,
 .form-select:focus {
-    border-color: #1e40af !important;
-    box-shadow: 0 0 0 0.2rem rgba(30, 64, 175, 0.25) !important;
+    border-color: #8B4513 !important;
+    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25) !important;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
 }
 
 /* Rating stars animation */
@@ -268,7 +268,7 @@
 
 /* Breadcrumb styling */
 .breadcrumb-item + .breadcrumb-item::before {
-    color: #6b7280;
+    color: #8B4513;
 }
 
 /* Image hover effect */
@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 text: 'Silakan login terlebih dahulu untuk mengirim ulasan.',
                 icon: 'warning',
                 confirmButtonText: 'Login Sekarang',
-                confirmButtonColor: '#1e40af',
+                confirmButtonColor: '#8B4513',
                 showCancelButton: true,
                 cancelButtonText: 'Batal'
             }).then((result) => {

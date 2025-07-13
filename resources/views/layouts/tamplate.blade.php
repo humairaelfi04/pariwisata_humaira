@@ -19,28 +19,28 @@
 
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-dark: #1e3a8a;
-            --primary-light: #3b82f6;
-            --secondary: #f59e0b;
-            --accent: #10b981;
-            --success: #059669;
-            --warning: #d97706;
-            --danger: #dc2626;
-            --info: #2563eb;
-            --dark: #1f2937;
-            --light: #f8fafc;
-            --white: #ffffff;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
+            --primary: #8B4513;
+            --primary-dark: #654321;
+            --primary-light: #A0522D;
+            --secondary: #D2691E;
+            --accent: #CD853F;
+            --success: #228B22;
+            --warning: #FF8C00;
+            --danger: #DC143C;
+            --info: #20B2AA;
+            --dark: #3E2723;
+            --light: #FDF5E6;
+            --white: #FFFAF0;
+            --gray-50: #FFF8DC;
+            --gray-100: #F5F5DC;
+            --gray-200: #DEB887;
+            --gray-300: #D2B48C;
+            --gray-400: #BC8F8F;
+            --gray-500: #A0522D;
+            --gray-600: #8B4513;
+            --gray-700: #654321;
+            --gray-800: #3E2723;
+            --gray-900: #2F1B14;
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -53,7 +53,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            background: linear-gradient(135deg, #F5DEB3 0%, #DEB887 100%);
             color: var(--gray-800);
             min-height: 100vh;
             overflow-x: hidden;
@@ -79,9 +79,9 @@
 
         /* Navbar */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 250, 240, 0.2);
             box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
         }
@@ -140,7 +140,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.1), transparent);
             transition: left 0.5s ease;
         }
 
@@ -150,7 +150,7 @@
 
         .nav-link:hover {
             color: var(--primary) !important;
-            background: rgba(30, 64, 175, 0.05);
+            background: rgba(139, 69, 19, 0.05);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
@@ -161,7 +161,7 @@
             box-shadow: var(--shadow-xl);
             padding: 0.75rem;
             margin-top: 0.5rem;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
         }
 
@@ -222,11 +222,11 @@
 
         /* Content Cards */
         .content-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 250, 240, 0.2);
             transition: all 0.3s ease;
             overflow: hidden;
         }
@@ -311,7 +311,7 @@
         }
 
         .btn-success {
-            background: linear-gradient(135deg, var(--success), #047857);
+            background: linear-gradient(135deg, var(--success), #1B5E20);
             border: none;
             border-radius: 12px;
             padding: 0.75rem 1.5rem;
@@ -326,7 +326,7 @@
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, var(--danger), #b91c1c);
+            background: linear-gradient(135deg, var(--danger), #B71C1C);
             border: none;
             border-radius: 12px;
             padding: 0.75rem 1.5rem;
@@ -342,7 +342,7 @@
 
         /* Tables */
         .table {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 16px;
             overflow: hidden;
@@ -367,7 +367,7 @@
         }
 
         .table tbody tr:hover {
-            background: rgba(30, 64, 175, 0.05);
+            background: rgba(139, 69, 19, 0.05);
             transform: scale(1.01);
             transition: all 0.3s ease;
         }
@@ -383,22 +383,22 @@
         }
 
         .badge-success {
-            background: linear-gradient(135deg, var(--success), #047857);
+            background: linear-gradient(135deg, var(--success), #1B5E20);
             color: white;
         }
 
         .badge-warning {
-            background: linear-gradient(135deg, var(--warning), #b45309);
+            background: linear-gradient(135deg, var(--warning), #E65100);
             color: white;
         }
 
         .badge-danger {
-            background: linear-gradient(135deg, var(--danger), #b91c1c);
+            background: linear-gradient(135deg, var(--danger), #B71C1C);
             color: white;
         }
 
         .badge-info {
-            background: linear-gradient(135deg, var(--info), #1d4ed8);
+            background: linear-gradient(135deg, var(--info), #00695C);
             color: white;
         }
 
@@ -475,7 +475,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
@@ -670,10 +670,10 @@
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.background = 'rgba(255, 250, 240, 0.98)';
                 navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.background = 'rgba(255, 250, 240, 0.95)';
                 navbar.style.boxShadow = '0 10px 15px -3px rgba(0,0,0,0.1)';
             }
         });
