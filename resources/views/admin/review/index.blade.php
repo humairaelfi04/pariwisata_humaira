@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="container-fluid mt-4">
-    {{-- Heading --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold mb-0" style="color: #8B4513;">
             <i class="bi bi-star-fill me-2" style="color: #CD853F;"></i> Moderasi Ulasan Pengunjung
@@ -13,7 +12,7 @@
 
     {{-- Alert Sukses --}}
     @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show shadow-sm rounded-3" role="alert" 
+        <div class="alert alert-success alert-dismissible fade show shadow-sm rounded-3" role="alert"
              style="background: rgba(25, 135, 84, 0.1); border: 1px solid rgba(25, 135, 84, 0.2); color: #0f5132;">
             <i class="bi bi-check-circle me-2"></i>{{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -27,7 +26,7 @@
                     <i class="bi bi-list-ul me-2" style="color: #CD853F;"></i> Daftar Ulasan
                 </h5>
             </div>
-            
+
             <div class="card-body px-4 py-4">
                 <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0">
@@ -57,7 +56,7 @@
                                         <span style="color: #8B4513;">{{ $review->email_pengunjung ?? '-' }}</span>
                                     </td>
                                     <td class="text-center" style="padding: 1rem 0.75rem; border: none;">
-                                        <span class="badge rounded-pill px-3 py-2" 
+                                        <span class="badge rounded-pill px-3 py-2"
                                               style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #8B4513; font-size: 0.8rem; font-weight: 600;">
                                             <i class="bi bi-star-fill me-1"></i>{{ $review->rating }}/5
                                         </span>
@@ -91,7 +90,7 @@
                                               class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-sm rounded-pill px-3 py-2" 
+                                            <button class="btn btn-sm rounded-pill px-3 py-2"
                                                     style="background: linear-gradient(135deg, #DC3545, #C82333); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                                                 <i class="bi bi-trash"></i>
                                             </button>
@@ -165,21 +164,21 @@
     .card-body {
         padding: 1.5rem;
     }
-    
+
     .table-responsive {
         font-size: 0.9rem;
     }
-    
+
     .d-flex.align-items-center {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .me-3 {
         margin-right: 0 !important;
         margin-bottom: 0.5rem;
     }
-    
+
     .form-select {
         font-size: 0.8rem;
     }

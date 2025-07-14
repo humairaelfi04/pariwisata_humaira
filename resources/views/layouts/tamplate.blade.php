@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistem Rekomendasi Wisata</title>
 
-    {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    {{-- Font Inter --}}
+    {{-- font inter --}}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    {{-- Font Awesome --}}
+    {{-- font awesome --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    {{-- AOS Animation --}}
+    {{-- AOS --}}
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -59,7 +56,7 @@
             overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
+        /* scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -77,7 +74,7 @@
             background: var(--primary-dark);
         }
 
-        /* Navbar */
+        /* navbar */
         .navbar {
             background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
@@ -119,7 +116,7 @@
         }
 
         .navbar-brand::before {
-            display: none; /* Menghilangkan emoji kompas karena sudah ada logo */
+            display: none;
         }
 
         .nav-link {
@@ -179,7 +176,7 @@
             transform: translateX(5px);
         }
 
-        /* Login Button */
+        /* button login */
         .btn-login {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
@@ -220,7 +217,7 @@
             min-height: calc(100vh - 200px);
         }
 
-        /* Content Cards */
+        /* card content */
         .content-card {
             background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
@@ -260,7 +257,7 @@
             padding: 2rem;
         }
 
-        /* Buttons */
+        /* button */
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
@@ -340,7 +337,7 @@
             box-shadow: var(--shadow-xl);
         }
 
-        /* Tables */
+        /* tabel */
         .table {
             background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
@@ -372,7 +369,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Status Badges */
+        /* status */
         .badge {
             padding: 0.5rem 1rem;
             border-radius: 25px;
@@ -407,7 +404,7 @@
             color: white;
         }
 
-        /* Footer */
+        /* footer */
         footer {
             background: linear-gradient(135deg, var(--gray-900), var(--gray-800));
             color: white;
@@ -468,7 +465,7 @@
             50% { transform: scale(1.2); }
         }
 
-        /* Loading Animation */
+        /* loading animasi */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -505,7 +502,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        /* responsive */
         @media (max-width: 768px) {
             .navbar-brand {
                 font-size: 1.25rem;
@@ -525,12 +522,12 @@
             }
         }
 
-        /* Smooth scrolling */
+        /*smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Floating elements animation */
+        /* floating elements animasi */
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
@@ -542,12 +539,11 @@
     </style>
 </head>
 <body>
-    <!-- Loading Overlay -->
+    <!-- loading overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner"></div>
     </div>
 
-    {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}" data-aos="fade-right">
@@ -617,12 +613,12 @@
         </div>
     </nav>
 
-    {{-- Content --}}
+    {{-- content --}}
     <main class="container">
         @yield('content')
     </main>
 
-    {{-- Footer --}}
+    {{-- footer --}}
     <footer>
         <div class="container">
             <div class="footer-content text-center" data-aos="fade-up">
@@ -639,34 +635,33 @@
         </div>
     </footer>
 
-    {{-- Scripts --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Initialize AOS
+        // AOS
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true
         });
 
-        // Loading Overlay
+        // loading overlay
         const loadingOverlay = document.getElementById('loadingOverlay');
 
-        // Show loading on page transitions
+        // loading transisi page
         document.addEventListener('click', function(e) {
             if (e.target.tagName === 'A' && e.target.href && !e.target.href.includes('#')) {
                 loadingOverlay.classList.add('show');
             }
         });
 
-        // Hide loading when page is fully loaded
+        // hide loading jika page fully loaded
         window.addEventListener('load', function() {
             loadingOverlay.classList.remove('show');
         });
 
-        // Navbar scroll effect
+        // navbar scroll efek
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -678,7 +673,7 @@
             }
         });
 
-        // Smooth scroll for anchor links
+        // smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -692,12 +687,12 @@
             });
         });
 
-        // Add floating animation to elements
+        // floating animasi utk elements
         document.querySelectorAll('.floating').forEach(element => {
             element.style.animationDelay = Math.random() * 2 + 's';
         });
 
-        // Parallax effect for background
+        // parallax efek utk background
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const parallax = document.querySelector('body');

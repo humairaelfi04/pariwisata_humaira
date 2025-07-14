@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('narahubung');
             $table->string('nomor_telepon');
             $table->string('alamat_umkm');
-            //$table->dropColumn('status_persetujuan');
             $table->foreignId('category_id')->constrained('humaira_categories')->onDelete('cascade');
             $table->timestamps();
         });
@@ -30,7 +29,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('humaira_umkms', function (Blueprint $table) {
-            
+
         });
     }
 };

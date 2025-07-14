@@ -16,7 +16,7 @@
                     @if($event->url_gambar_acara)
                         <div class="position-relative overflow-hidden" style="height: 200px;">
                             <img src="{{ asset('images/' . $event->url_gambar_acara) }}" class="card-img-top w-100 h-100" alt="Gambar Acara" style="object-fit: cover; transition: transform 0.3s ease;">
-                            <!-- Overlay -->
+
                             <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(139, 69, 19, 0.08), rgba(160, 82, 45, 0.08));"></div>
                         </div>
                     @else

@@ -18,7 +18,6 @@
             </div>
 
             <div class="card-body px-4 py-4">
-                {{-- Alert Error --}}
                 @if ($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show shadow-sm rounded-3" role="alert" style="background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.2); color: #721c24;">
                         <strong>Perhatian!</strong> Silakan perbaiki input berikut:
@@ -37,14 +36,14 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nama_usaha" class="form-label fw-semibold" style="color: #8B4513;">Nama Usaha <span class="text-danger">*</span></label>
-                            <input type="text" name="nama_usaha" id="nama_usaha" class="form-control rounded-3" required 
+                            <input type="text" name="nama_usaha" id="nama_usaha" class="form-control rounded-3" required
                                    style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                    placeholder="Masukkan nama usaha">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="narahubung" class="form-label fw-semibold" style="color: #8B4513;">Narahubung <span class="text-danger">*</span></label>
-                            <input type="text" name="narahubung" id="narahubung" class="form-control rounded-3" required 
+                            <input type="text" name="narahubung" id="narahubung" class="form-control rounded-3" required
                                    style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                    placeholder="Nama narahubung">
                         </div>
@@ -53,14 +52,14 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nomor_telepon" class="form-label fw-semibold" style="color: #8B4513;">Nomor Telepon <span class="text-danger">*</span></label>
-                            <input type="text" name="nomor_telepon" id="nomor_telepon" class="form-control rounded-3" required 
+                            <input type="text" name="nomor_telepon" id="nomor_telepon" class="form-control rounded-3" required
                                    style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                    placeholder="08xxxxxxxxxx">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="category_id" class="form-label fw-semibold" style="color: #8B4513;">Kategori <span class="text-danger">*</span></label>
-                            <select name="category_id" id="category_id" class="form-select rounded-3" required 
+                            <select name="category_id" id="category_id" class="form-select rounded-3" required
                                     style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;">
                                 <option value="">-- Pilih Kategori --</option>
                                 @foreach ($categories as $kategori)
@@ -72,14 +71,14 @@
 
                     <div class="mb-3">
                         <label for="alamat_umkm" class="form-label fw-semibold" style="color: #8B4513;">Alamat UMKM <span class="text-danger">*</span></label>
-                        <textarea name="alamat_umkm" id="alamat_umkm" rows="3" class="form-control rounded-3" required 
+                        <textarea name="alamat_umkm" id="alamat_umkm" rows="3" class="form-control rounded-3" required
                                   style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                   placeholder="Masukkan alamat lengkap UMKM"></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="deskripsi_layanan" class="form-label fw-semibold" style="color: #8B4513;">Deskripsi Layanan <span class="text-danger">*</span></label>
-                        <textarea name="deskripsi_layanan" id="deskripsi_layanan" rows="4" class="form-control rounded-3" required 
+                        <textarea name="deskripsi_layanan" id="deskripsi_layanan" rows="4" class="form-control rounded-3" required
                                   style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                   placeholder="Jelaskan layanan yang ditawarkan UMKM"></textarea>
                     </div>
@@ -97,11 +96,11 @@
                     </div>
 
                     <div class="d-flex justify-content-end gap-3 mt-4 pt-3" style="border-top: 1px solid rgba(139, 69, 19, 0.1);">
-                        <a href="{{ route('admin.umkm.index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2" 
+                        <a href="{{ route('admin.umkm.index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2"
                            style="border: 2px solid #8B4513; color: #8B4513; font-weight: 600; transition: all 0.3s ease;">
                             <i class="bi bi-x-circle me-1"></i> Batal
                         </a>
-                        <button type="submit" class="btn rounded-pill px-4 py-2 shadow-sm" 
+                        <button type="submit" class="btn rounded-pill px-4 py-2 shadow-sm"
                                 style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                             <i class="bi bi-save me-1"></i> Simpan UMKM
                         </button>
@@ -167,11 +166,11 @@
     .card-body {
         padding: 1.5rem;
     }
-    
+
     .d-flex.justify-content-end {
         flex-direction: column;
     }
-    
+
     .btn {
         width: 100%;
         margin-bottom: 0.5rem;

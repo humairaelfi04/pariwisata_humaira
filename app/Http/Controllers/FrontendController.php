@@ -12,12 +12,12 @@ class FrontendController extends Controller
     {
         $query = Destination::query()->with('category');
 
-        // Optional search filter
+        //search filter
         if ($request->has('search')) {
             $query->where('nama', 'like', '%' . $request->search . '%');
         }
 
-        // Optional category filter
+        //category filter
         if ($request->has('category')) {
             $query->where('category_id', $request->category);
         }

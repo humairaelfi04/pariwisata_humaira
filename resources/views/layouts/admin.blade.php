@@ -4,14 +4,11 @@
   <meta charset="UTF-8">
   <title>Admin Panel - @yield('title')</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  {{-- Bootstrap & Fonts --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  {{-- AOS Animation --}}
+  {{-- AOS animasi --}}
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
@@ -59,7 +56,7 @@
       overflow-x: hidden;
     }
 
-    /* Custom Scrollbar */
+    /* scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -82,7 +79,7 @@
       min-height: 100vh;
     }
 
-    /* Sidebar */
+    /* sidebar */
     #sidebar-wrapper {
       width: 270px;
       background: var(--glass-bg);
@@ -196,7 +193,7 @@
       font-size: 1.15rem;
     }
 
-    /* Page Content */
+    /* halaman content */
     #page-content-wrapper {
       margin-left: 270px;
       width: calc(100% - 270px);
@@ -319,7 +316,7 @@
       min-height: calc(100vh - 100px);
     }
 
-    /* Content Cards */
+    /* cards content */
     .content-card {
       background: var(--glass-bg);
       backdrop-filter: var(--glass-blur);
@@ -346,7 +343,7 @@
       padding: 2rem;
     }
 
-    /* Buttons */
+    /* button */
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       border: none;
@@ -385,7 +382,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    /* Tables */
+    /* tabel */
     .table {
       border-radius: 12px;
       overflow: hidden;
@@ -412,7 +409,7 @@
       background: rgba(139, 69, 19, 0.05);
     }
 
-    /* Status Badges */
+    /* status badges */
     .badge {
       padding: 0.5rem 1rem;
       border-radius: 25px;
@@ -445,7 +442,7 @@
       color: var(--white);
     }
 
-    /* Responsive */
+    /* responsive */
     @media (max-width: 1024px) {
       #sidebar-wrapper {
         transform: translateX(-100%);
@@ -485,7 +482,7 @@
       }
     }
 
-    /* Loading Animation */
+    /* loading animasi */
     .loading-overlay {
       position: fixed;
       top: 0;
@@ -521,7 +518,7 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Sidebar Toggle for Mobile */
+    /* didebar toggle utk mobile */
     .sidebar-toggle {
       display: none;
       background: var(--primary);
@@ -538,7 +535,7 @@
       }
     }
 
-    /* Overlay for mobile sidebar */
+    /* overlay utk sidebar mobile */
     .sidebar-overlay {
       position: fixed;
       top: 0;
@@ -559,16 +556,16 @@
   </style>
 </head>
 <body>
-  <!-- Loading Overlay -->
+  <!-- loading overlay -->
   <div class="loading-overlay" id="loadingOverlay">
     <div class="spinner"></div>
   </div>
 
-  <!-- Sidebar Overlay for Mobile -->
+  <!-- sidebar overlay utk mobile -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <div id="wrapper">
-    {{-- Sidebar --}}
+    {{-- sidebar --}}
     <div id="sidebar-wrapper" data-aos="fade-right">
       <a href="{{ url('/') }}" class="sidebar-brand" data-aos="fade-down" data-aos-delay="100">
         <img src="{{ asset('images/logo.jpg') }}" alt="Logo">
@@ -606,7 +603,7 @@
       </div>
     </div>
 
-    {{-- Content --}}
+    {{-- content --}}
     <div id="page-content-wrapper">
       <nav class="navbar-custom">
         <div class="d-flex align-items-center gap-3">
@@ -618,7 +615,7 @@
             <input class="form-control search-box" type="search" placeholder="Cari sesuatu..." aria-label="Search">
           </div>
         </div>
-        
+
         <div class="d-flex align-items-center gap-3">
           <div class="admin-profile">
             <div class="admin-info">
@@ -642,19 +639,18 @@
     </div>
   </div>
 
-  {{-- Scripts --}}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
+
   <script>
-    // Initialize AOS
+    // AOS
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
       once: true
     });
 
-    // Sidebar Toggle for Mobile
+    // sidebar toggle utk mobile
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebarWrapper = document.getElementById('sidebar-wrapper');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -669,30 +665,30 @@
       sidebarOverlay.classList.remove('show');
     });
 
-    // Loading Overlay
+    // loading overlay
     const loadingOverlay = document.getElementById('loadingOverlay');
 
-    // Show loading on page transitions
+    // loading transisi halaman
     document.addEventListener('click', function(e) {
       if (e.target.tagName === 'A' && e.target.href && !e.target.href.includes('#')) {
         loadingOverlay.classList.add('show');
       }
     });
 
-    // Hide loading when page is fully loaded
+    // hide loading jika page full loading
     window.addEventListener('load', function() {
       loadingOverlay.classList.remove('show');
     });
 
-    // Search functionality
+    // search
     const searchBox = document.querySelector('.search-box');
     searchBox.addEventListener('input', function(e) {
       const searchTerm = e.target.value.toLowerCase();
-      // Add your search logic here
+      // search logic
       console.log('Searching for:', searchTerm);
     });
 
-    // Smooth scrolling for anchor links
+    // smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -706,7 +702,7 @@
       });
     });
 
-    // Add active class to current page in sidebar
+    // bar active ketika sedang di halaman itu
     const currentPath = window.location.pathname;
     document.querySelectorAll('.sidebar-link').forEach(link => {
       if (link.getAttribute('href') === currentPath) {
@@ -714,7 +710,7 @@
       }
     });
 
-    // Auto-hide sidebar on mobile when clicking outside
+    // auto-hide sidebar jika sudah keluar dari sidebar
     document.addEventListener('click', function(e) {
       if (window.innerWidth <= 1024) {
         if (!sidebarWrapper.contains(e.target) && !sidebarToggle.contains(e.target)) {

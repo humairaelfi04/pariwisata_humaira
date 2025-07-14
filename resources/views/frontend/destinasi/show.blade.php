@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container py-5">
-    {{-- Breadcrumb --}}
     <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -19,10 +18,9 @@
         </ol>
     </nav>
 
-    {{-- Detail Destinasi Wisata --}}
+    {{-- detail destinasi wisata --}}
     <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5" data-aos="fade-up" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px);">
         <div class="row g-0">
-            {{-- Gambar --}}
             <div class="col-md-6 position-relative">
                 @if ($destinasi->url_gambar_utama)
                     <div class="position-relative overflow-hidden" style="height: 500px;">
@@ -30,12 +28,12 @@
                              class="img-fluid h-100 w-100"
                              style="object-fit: cover; transition: transform 0.3s ease;"
                              alt="{{ $destinasi->nama }}">
-                        
-                        <!-- Overlay with gradient -->
-                        <div class="position-absolute top-0 start-0 w-100 h-100" 
+
+                        <!-- Overlay dengan gradasi -->
+                        <div class="position-absolute top-0 start-0 w-100 h-100"
                              style="background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1));"></div>
-                        
-                        <!-- Category Badge -->
+
+                        <!-- kategori -->
                         @if($destinasi->category)
                             <div class="position-absolute top-0 start-0 m-4">
                                 <span class="badge" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border-radius: 20px; padding: 10px 20px; font-size: 0.9rem;">
@@ -44,12 +42,12 @@
                             </div>
                         @endif
 
-                        <!-- Status Badge -->
-                        <div class="position-absolute top-0 end-0 m-4">
+                        <!-- status -->
+                        {{-- <div class="position-absolute top-0 end-0 m-4">
                             <span class="badge" style="background: rgba(255, 250, 240, 0.9); color: #8B4513; border-radius: 20px; padding: 10px 20px; font-size: 0.9rem;">
                                 <i class="fas fa-check-circle me-1"></i>{{ ucfirst($destinasi->status_publikasi) }}
                             </span>
-                        </div>
+                        </div> --}}
                     </div>
                 @endif
             </div>
@@ -113,7 +111,7 @@
         </div>
     </div>
 
-    {{-- Notifikasi --}}
+    {{-- notif berhasil ngirim ulasan --}}
     @if (session('success'))
         <div class="alert alert-success border-0 shadow-sm rounded-3 mb-4" data-aos="fade-up" style="background: linear-gradient(135deg, #F0FFF0, #98FB98); border-left: 4px solid #228B22;">
             <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
@@ -147,7 +145,7 @@
                     <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-user me-1"></i>Nama
                     </label>
-                    <input type="text" name="nama_pengunjung" class="form-control form-control-lg" 
+                    <input type="text" name="nama_pengunjung" class="form-control form-control-lg"
                            style="border: 2px solid #DEB887; border-radius: 12px;" required>
                 </div>
 
@@ -155,7 +153,7 @@
                     <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-envelope me-1"></i>Email
                     </label>
-                    <input type="email" name="email_pengunjung" class="form-control form-control-lg" 
+                    <input type="email" name="email_pengunjung" class="form-control form-control-lg"
                            style="border: 2px solid #DEB887; border-radius: 12px;" required>
                 </div>
 
@@ -163,7 +161,7 @@
                     <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-star me-1"></i>Rating
                     </label>
-                    <select name="rating" class="form-select form-select-lg" 
+                    <select name="rating" class="form-select form-select-lg"
                             style="border: 2px solid #DEB887; border-radius: 12px;" required>
                         <option value="">Pilih rating</option>
                         <option value="5">⭐⭐⭐⭐⭐ (5) - Sangat Baik</option>
@@ -178,13 +176,13 @@
                     <label class="form-label fw-semibold" style="color: #8B4513;">
                         <i class="fas fa-comment me-1"></i>Komentar
                     </label>
-                    <textarea name="komentar" rows="4" class="form-control" 
-                              style="border: 2px solid #DEB887; border-radius: 12px;" 
+                    <textarea name="komentar" rows="4" class="form-control"
+                              style="border: 2px solid #DEB887; border-radius: 12px;"
                               placeholder="Bagikan pengalaman Anda tentang destinasi ini..." required></textarea>
                 </div>
 
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow-sm" 
+                    <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow-sm"
                             style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; padding: 12px 30px;">
                         <i class="fas fa-paper-plane me-2"></i>Kirim Ulasan
                     </button>
@@ -193,7 +191,7 @@
         </div>
     </div>
 
-    {{-- Ulasan Pengunjung --}}
+    {{-- riwayat ulasan pengunjung --}}
     <div class="card border-0 shadow-lg rounded-4" data-aos="fade-up" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px);">
         <div class="card-header border-0" style="background: linear-gradient(135deg, #D2691E, #CD853F); border-radius: 20px 20px 0 0;">
             <h4 class="text-white fw-bold mb-0">
@@ -203,7 +201,7 @@
         </div>
         <div class="card-body p-4">
             @forelse ($destinasi->reviews as $review)
-                <div class="border-0 rounded-3 p-4 mb-3 shadow-sm" 
+                <div class="border-0 rounded-3 p-4 mb-3 shadow-sm"
                      style="background: linear-gradient(135deg, #FFF8DC, #F5F5DC); border-left: 4px solid #D2691E;">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
@@ -239,7 +237,7 @@
 </div>
 
 <style>
-/* Custom hover effects */
+/* hover efek */
 .card:hover {
     transform: translateY(-5px);
     transition: transform 0.3s ease;
@@ -256,7 +254,7 @@
     box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
 }
 
-/* Rating stars animation */
+/* rating animasi bintang */
 .fa-star.text-warning {
     animation: starGlow 2s ease-in-out infinite;
 }
@@ -266,39 +264,39 @@
     50% { transform: scale(1.1); }
 }
 
-/* Breadcrumb styling */
+
 .breadcrumb-item + .breadcrumb-item::before {
     color: #8B4513;
 }
 
-/* Image hover effect */
+/* image hover efek */
 .card img:hover {
     transform: scale(1.05);
 }
 
-/* Review card hover */
+/* review card hover */
 .card-body > div:hover {
     transform: translateX(5px);
     transition: transform 0.3s ease;
 }
 
-/* Responsive adjustments */
+/* responsive adjustments */
 @media (max-width: 768px) {
     .card-body {
         padding: 1.5rem !important;
     }
-    
+
     .btn-lg {
         padding: 0.75rem 1.5rem !important;
         font-size: 0.9rem !important;
     }
-    
+
     .col-md-6 .position-relative {
         height: 300px !important;
     }
 }
 
-/* Loading animation */
+/* loading animasi */
 .card {
     animation: fadeInUp 0.6s ease-out;
 }
@@ -324,8 +322,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (form && !isLoggedIn) {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
-            
-            // Show custom alert
+
+
             Swal.fire({
                 title: 'Login Diperlukan',
                 text: 'Silakan login terlebih dahulu untuk mengirim ulasan.',
@@ -342,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Add smooth scrolling
+    // smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -356,13 +354,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Add form validation
+    // form validasi
     const ratingSelect = document.querySelector('select[name="rating"]');
     if (ratingSelect) {
         ratingSelect.addEventListener('change', function() {
             const selectedValue = this.value;
             const stars = this.parentElement.querySelectorAll('.fa-star');
-            
+
             stars.forEach((star, index) => {
                 if (index < selectedValue) {
                     star.classList.add('text-warning');

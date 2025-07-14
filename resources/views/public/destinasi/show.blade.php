@@ -1,4 +1,4 @@
-@extends('layouts.frontend') {{-- Pastikan layout ini ada --}}
+@extends('layouts.frontend')
 
 @section('content')
 <div class="container py-4">

@@ -11,7 +11,7 @@
             <p class="lead text-muted mb-0">Jelajahi tempat-tempat menakjubkan yang siap memberikan pengalaman tak terlupakan</p>
         </div>
 
-        {{-- Form Pencarian & Filter --}}
+        {{-- pencarian & Filter --}}
         <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="col-lg-8">
                 <form method="GET" action="{{ route('home') }}" class="card border-0 shadow-lg" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px); border-radius: 20px;">
@@ -20,9 +20,9 @@
                             <div class="col-md-5">
                                 <div class="position-relative">
                                     <i class="fas fa-search position-absolute" style="top: 50%; left: 15px; transform: translateY(-50%); color: #8B4513; z-index: 10;"></i>
-                                    <input type="text" name="search" 
-                                           class="form-control form-control-lg ps-5" 
-                                           placeholder="Cari destinasi..." 
+                                    <input type="text" name="search"
+                                           class="form-control form-control-lg ps-5"
+                                           placeholder="Cari destinasi..."
                                            value="{{ request('search') }}"
                                            style="border: 2px solid #DEB887; border-radius: 15px; background: rgba(255, 250, 240, 0.8);">
                                 </div>
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        {{-- Stats Section --}}
+        {{-- card total --}}
         <div class="row text-center mb-5" data-aos="fade-up" data-aos-delay="300">
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm" style="background: rgba(255, 250, 240, 0.9); border-radius: 15px;">
@@ -82,18 +82,18 @@
             </div>
         </div>
 
-        {{-- Grid Destinasi --}}
+        {{-- grid destinasi --}}
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
             @forelse ($destinations as $destination)
                 <div class="col" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                     <div class="card h-100 border-0 shadow-lg" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px); border-radius: 20px; overflow: hidden; transition: all 0.3s ease;">
                         <div class="position-relative overflow-hidden" style="height: 220px;">
                             <img src="{{ asset('images/' . $destination->url_gambar_utama) }}"
-                                class="card-img-top w-100 h-100" 
+                                class="card-img-top w-100 h-100"
                                 alt="{{ $destination->nama }}"
                                 style="object-fit: cover; transition: transform 0.3s ease;">
-                            
-                            <!-- Category Badge -->
+
+                            <!-- kategori -->
                             @if($destination->category)
                                 <div class="position-absolute top-0 start-0 m-3">
                                     <span class="badge" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border-radius: 20px; padding: 8px 16px; font-size: 0.8rem;">
@@ -104,7 +104,7 @@
 
 
 
-                            <!-- Hover Overlay -->
+                            <!-- hover overlay -->
                             <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0; transition: opacity 0.3s ease; background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.8));"></div>
                         </div>
 
@@ -112,7 +112,7 @@
                             <h5 class="card-title fw-bold mb-2" style="color: #3E2723; font-size: 1.1rem;">
                                 {{ $destination->nama }}
                             </h5>
-                            
+
                             <p class="card-text text-muted mb-3" style="font-size: 0.9rem; line-height: 1.6;">
                                 {{ Str::limit($destination->deskripsi, 100) }}
                             </p>
@@ -124,14 +124,14 @@
                                 </div>
 
                                 <a href="{{ route('destinasi.show', $destination->id) }}"
-                                   class="btn btn-primary w-100" 
+                                   class="btn btn-primary w-100"
                                    style="border-radius: 12px; background: linear-gradient(135deg, #8B4513, #A0522D); border: none; font-weight: 600; padding: 12px; transition: all 0.3s ease;">
                                     <i class="fas fa-eye me-2"></i>Lihat Detail
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Hover Effects -->
+                        <!-- efek hover -->
                         <div class="card-hover-overlay"></div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
             @endforelse
         </div>
 
-        {{-- Pagination --}}
+        {{-- pagination --}}
         @if ($destinations->hasPages())
             <div class="d-flex justify-content-center mt-5" data-aos="fade-up">
                 <nav>
@@ -157,7 +157,7 @@
                 </div>
         @endif
 
-        {{-- Call to Action --}}
+        {{-- memanggil aksi --}}
         <div class="text-center mt-5" data-aos="fade-up">
             <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #8B4513, #A0522D); border-radius: 20px;">
                 <div class="card-body py-5">
@@ -173,7 +173,7 @@
 </section>
 
 <style>
-/* Custom hover effects */
+/* utk efek hover */
 .card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 25px 50px -12px rgba(139, 69, 19, 0.25) !important;
@@ -187,7 +187,7 @@
     opacity: 1;
 }
 
-/* Custom pagination styling */
+/* pagination */
 .pagination .page-link {
     border-radius: 12px;
     margin: 0 5px;
@@ -210,42 +210,42 @@
     color: white;
 }
 
-/* Form control focus effects */
+/* efek fokus form */
 .form-control:focus,
 .form-select:focus {
     border-color: #8B4513 !important;
     box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25) !important;
 }
 
-/* Button hover effects */
+/* button efek hover */
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
 }
 
-/* Stats cards hover */
+/* card total hover */
 .card:hover .fa-2x {
     transform: scale(1.1);
     transition: transform 0.3s ease;
 }
 
-/* Responsive adjustments */
+/* responsive adjustments */
 @media (max-width: 768px) {
     .display-4 {
         font-size: 2rem;
     }
-    
+
     .card-body {
         padding: 1rem !important;
     }
-    
+
     .btn-lg {
         padding: 0.75rem 1rem !important;
         font-size: 0.9rem !important;
     }
 }
 
-/* Loading animation for images */
+/* loading animasi gambar */
 .card-img-top {
     background: linear-gradient(90deg, #F5F5DC 25%, #DEB887 50%, #F5F5DC 75%);
     background-size: 200% 100%;
@@ -257,7 +257,7 @@
     100% { background-position: -200% 0; }
 }
 
-/* Floating animation for stats icons */
+/* animasi card icons */
 .fa-2x {
     animation: floating 3s ease-in-out infinite;
 }
@@ -269,10 +269,10 @@
 </style>
 
 <script>
-// Add intersection observer for lazy loading
+// tambah intersection utk lazy loading
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add smooth scroll for pagination
+// smooth scroll utk pagination
 document.querySelectorAll('.pagination .page-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();

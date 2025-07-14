@@ -27,7 +27,7 @@
                     </div>
                 @endif
 
-                {{-- Form --}}
+                {{-- Form Edit UMKM --}}
                 <form action="{{ route('admin.umkm.update', $umkm->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PUT')
@@ -77,7 +77,6 @@
                         </select>
                     </div>
 
-                    {{-- Upload Gambar --}}
                     <div class="mb-3">
                         <label class="form-label fw-semibold" style="color: #8B4513;">Gambar UMKM (Opsional)</label>
                         <input type="file" name="url_gambar_umkm" class="form-control rounded-3" style="border: 1.5px solid #DEB887; background: #F5F5DC; transition: all 0.3s ease;">

@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sistem Rekomendasi Wisata</title>
 
-    {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    {{-- Font Inter --}}
+    {{-- font inter --}}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    {{-- Font Awesome --}}
+    {{-- font awesome --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-
-    {{-- AOS Animation --}}
+    {{-- AOS animasi --}}
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -56,7 +52,7 @@
             overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
+        /* scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -74,7 +70,7 @@
             background: linear-gradient(180deg, var(--primary-dark), var(--primary-ultra));
         }
 
-        /* Navbar */
+        /*  navbar */
         .navbar {
             background: rgba(255, 250, 240, 0.95);
             backdrop-filter: blur(20px);
@@ -167,7 +163,7 @@
             transform: translateX(5px);
         }
 
-        /* Login Button */
+        /* button login */
         .btn-login {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border: none;
@@ -208,7 +204,7 @@
             min-height: calc(100vh - 200px);
         }
 
-        /* Hero Section */
+        /* hero section */
         .hero-section {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark), var(--primary-ultra));
             min-height: 70vh;
@@ -268,7 +264,7 @@
             line-height: 1.8;
         }
 
-        /* Cards */
+        /* cards */
         .card {
             border: none;
             border-radius: 20px;
@@ -311,7 +307,7 @@
             line-height: 1.7;
         }
 
-        /* Buttons */
+        /* button */
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border: none;
@@ -379,7 +375,7 @@
             background: linear-gradient(135deg, var(--accent), var(--secondary));
         }
 
-        /* Footer */
+        /* footer */
         footer {
             background: linear-gradient(135deg, var(--primary-ultra), var(--primary-dark), var(--primary));
             color: white;
@@ -467,7 +463,7 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Pagination */
+        /* pagination */
         .pagination {
             gap: 0.75rem;
             justify-content: center;
@@ -508,7 +504,7 @@
             opacity: 0.6;
         }
 
-        /* Loading Animation */
+        /* loading animasi */
         .loading {
             position: fixed;
             top: 0;
@@ -542,7 +538,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Back to top button */
+        /* button kembali ke atas */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -571,7 +567,7 @@
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
 
-        /* Responsive */
+        /* responsive */
         @media (max-width: 768px) {
             .navbar-brand {
                 font-size: 1.3rem;
@@ -599,12 +595,12 @@
             }
         }
 
-        /* Smooth scrolling */
+        /*smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Floating animation */
+        /* floating animasi */
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
@@ -614,7 +610,7 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Glow effect */
+        /* glow efek */
         .glow {
             box-shadow: 0 0 20px rgba(139, 69, 19, 0.3);
         }
@@ -625,23 +621,22 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
+
     <div class="loading" id="loading">
         <div class="spinner"></div>
     </div>
 
-    {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url('/') }}" data-aos="fade-right">
                 <img src="{{ asset('images/logo.jpg') }}" alt="Logo" width="45" height="45" class="rounded-circle shadow-sm">
                 <span>MalalaWak</span>
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item" data-aos="fade-down" data-aos-delay="100">
@@ -700,12 +695,10 @@
         </div>
     </nav>
 
-    {{-- Content --}}
     <main class="container">
         @yield('content')
     </main>
 
-    {{-- Footer --}}
     <footer>
         <div class="container">
             <div class="row g-4">
@@ -754,24 +747,23 @@
         </div>
     </footer>
 
-    <!-- Back to top button -->
+    <!-- button kembali ke atas -->
     <button class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    {{-- Scripts --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <script>
-        // Initialize AOS
+        // AOS
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true
         });
 
-        // Loading screen
+        // loading screen
         window.addEventListener('load', function() {
             const loading = document.getElementById('loading');
             loading.classList.add('hidden');
@@ -780,9 +772,9 @@
             }, 500);
         });
 
-        // Back to top button
+        // button kembali ke atas
         const backToTopBtn = document.getElementById('backToTop');
-        
+
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
                 backToTopBtn.classList.add('show');
@@ -798,7 +790,7 @@
             });
         });
 
-        // Navbar scroll effect
+        // efek navbar scroll
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -810,7 +802,7 @@
             }
         });
 
-        // Smooth scroll for anchor links
+        // smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -824,12 +816,12 @@
             });
         });
 
-        // Add floating animation delay
+        // floating animasi delay
         document.querySelectorAll('.floating').forEach((element, index) => {
             element.style.animationDelay = `${index * 0.2}s`;
         });
 
-        // Parallax effect
+        // parallax efek
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const parallax = document.querySelector('body');
@@ -837,7 +829,7 @@
             parallax.style.transform = `translateY(${speed}px)`;
         });
     </script>
-    
+
     @stack('scripts')
 </body>
 </html>

@@ -11,7 +11,7 @@
                     <h4 class="fw-bold mb-0" style="color: white;">
                         <i class="bi bi-pencil-square me-2" style="color: white;"></i> Edit Kategori
                     </h4>
-                    <a href="{{ route('admin.kategori.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2" 
+                    <a href="{{ route('admin.kategori.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2"
                        style="border-color: #8B4513; color: #8B4513; font-weight: 500; transition: all 0.3s ease;">
                         <i class="bi bi-arrow-left me-1"></i> Kembali
                     </a>
@@ -21,7 +21,7 @@
             <div class="card-body px-4 py-4">
                 {{-- Alert Error --}}
                 @if ($errors->any())
-                    <div class="alert alert-danger alert-dismissible fade show shadow-sm rounded-3" role="alert" 
+                    <div class="alert alert-danger alert-dismissible fade show shadow-sm rounded-3" role="alert"
                          style="background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.2); color: #721c24;">
                         <strong>Perhatian!</strong> Silakan periksa kembali inputan Anda:
                         <ul class="mb-0 mt-2">
@@ -33,7 +33,7 @@
                     </div>
                 @endif
 
-                {{-- Form --}}
+                {{-- Form Edit Kategori --}}
                 <form action="{{ route('admin.kategori.update', $category->id) }}" method="POST" class="needs-validation" novalidate>
                     @csrf
                     @method('PUT')
@@ -46,7 +46,7 @@
                             </span>
                             <input type="text" name="nama_kategori" id="nama_kategori"
                                 class="form-control rounded-end"
-                                value="{{ old('nama_kategori', $category->nama_kategori) }}" required 
+                                value="{{ old('nama_kategori', $category->nama_kategori) }}" required
                                 style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                 placeholder="Masukkan nama kategori">
                         </div>
@@ -58,7 +58,7 @@
                             <span class="input-group-text rounded-start" style="background: #DEB887; border: 2px solid #DEB887; color: #8B4513;">
                                 <i class="bi bi-list-ul"></i>
                             </span>
-                            <select name="jenis_kategori" id="jenis_kategori" class="form-select rounded-end" required 
+                            <select name="jenis_kategori" id="jenis_kategori" class="form-select rounded-end" required
                                     style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;">
                                 <option value="">-- Pilih Jenis Kategori --</option>
                                 <option value="destinasi" {{ old('jenis_kategori', $category->jenis_kategori) == 'destinasi' ? 'selected' : '' }}>
@@ -76,11 +76,11 @@
                     </div>
 
                     <div class="d-flex justify-content-end gap-3 mt-4 pt-3" style="border-top: 1px solid rgba(139, 69, 19, 0.1);">
-                        <a href="{{ route('admin.kategori.index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2" 
+                        <a href="{{ route('admin.kategori.index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2"
                            style="border: 2px solid #8B4513; color: #8B4513; font-weight: 600; transition: all 0.3s ease;">
                             <i class="bi bi-x-circle me-1"></i> Batal
                         </a>
-                        <button type="submit" class="btn rounded-pill px-4 py-2 shadow-sm" 
+                        <button type="submit" class="btn rounded-pill px-4 py-2 shadow-sm"
                                 style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                             <i class="bi bi-save me-1"></i> Simpan Perubahan
                         </button>
@@ -146,11 +146,11 @@
     .card-body {
         padding: 1.5rem;
     }
-    
+
     .d-flex.justify-content-end {
         flex-direction: column;
     }
-    
+
     .btn {
         width: 100%;
         margin-bottom: 0.5rem;

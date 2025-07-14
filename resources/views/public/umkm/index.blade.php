@@ -3,7 +3,6 @@
 @section('content')
 <section class="py-5" style="background: linear-gradient(135deg, #F5DEB3 0%, #DEB887 100%);">
     <div class="container">
-        <!-- Hero Header -->
         <div class="text-center mb-5" data-aos="fade-up">
             <h1 class="display-4 fw-bold mb-3" style="background: linear-gradient(135deg, #8B4513, #A0522D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                 🏪 UMKM Lokal Unggulan
@@ -11,7 +10,7 @@
             <p class="lead text-muted mb-0">Dukung perekonomian lokal dengan membeli produk dan layanan dari UMKM terbaik</p>
         </div>
 
-        {{-- Form Pencarian & Filter --}}
+        {{-- search dan filter --}}
         <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="col-lg-8">
                 <form method="GET" action="{{ route('public.umkm.index') }}" class="card border-0 shadow-lg" style="background: rgba(255, 250, 240, 0.95); backdrop-filter: blur(20px); border-radius: 20px;">
@@ -20,9 +19,9 @@
                             <div class="col-md-5">
                                 <div class="position-relative">
                                     <i class="fas fa-search position-absolute" style="top: 50%; left: 15px; transform: translateY(-50%); color: #8B4513; z-index: 10;"></i>
-                                    <input type="text" name="search" 
-                                           class="form-control form-control-lg ps-5" 
-                                           placeholder="Cari UMKM..." 
+                                    <input type="text" name="search"
+                                           class="form-control form-control-lg ps-5"
+                                           placeholder="Cari UMKM..."
                                            value="{{ request('search') }}"
                                            style="border: 2px solid #DEB887; border-radius: 15px; background: rgba(255, 250, 240, 0.8);">
                                 </div>
@@ -51,7 +50,7 @@
             </div>
         </div>
 
-        {{-- Grid UMKM --}}
+        {{-- list umkm --}}
         @if ($umkm->isEmpty())
             <div class="text-center py-5" data-aos="fade-up">
                 <div class="card border-0 shadow-lg" style="background: rgba(255, 250, 240, 0.95); border-radius: 20px;">
@@ -70,7 +69,7 @@
                             <div class="position-relative overflow-hidden" style="height: 200px;">
                                 @if($item->url_gambar_umkm)
                                     <img src="{{ asset('storage/' . $item->url_gambar_umkm) }}"
-                                         alt="Gambar UMKM" 
+                                         alt="Gambar UMKM"
                                          class="card-img-top w-100 h-100"
                                          style="object-fit: cover; transition: transform 0.3s ease;">
                                 @else
@@ -79,7 +78,7 @@
                                     </div>
                                 @endif
 
-                                <!-- Category Badge -->
+                                <!-- kategori -->
                                 @if($item->category)
                                     <div class="position-absolute top-0 start-0 m-3">
                                         <span class="badge" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border-radius: 20px; padding: 8px 16px; font-size: 0.8rem;">
@@ -109,7 +108,7 @@
                                         </div>
                                     </div>
                                     <a href="{{ route('public.umkm.show', $item->id) }}"
-                                       class="btn btn-primary w-100" 
+                                       class="btn btn-primary w-100"
                                        style="border-radius: 12px; background: linear-gradient(135deg, #8B4513, #A0522D); border: none; font-weight: 600; padding: 12px; transition: all 0.3s ease;">
                                         <i class="fas fa-eye me-2"></i>Lihat Detail
                                     </a>
@@ -120,7 +119,7 @@
                 @endforeach
             </div>
 
-            {{-- Pagination --}}
+            {{-- pagination --}}
             <div class="d-flex justify-content-center mt-5" data-aos="fade-up">
                 {{ $umkm->withQueryString()->links('pagination::bootstrap-5') }}
             </div>

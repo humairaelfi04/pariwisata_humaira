@@ -20,7 +20,6 @@
     </div>
 @endif
 
-{{-- Card berisi tabel --}}
 <div class="card border-0 shadow-sm rounded-4" style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(139, 69, 19, 0.1);">
     <div class="card-body">
         <div class="table-responsive">
@@ -40,7 +39,6 @@
                         <tr style="transition: all 0.3s ease;">
                             <td class="text-center" style="color: #8B4513; font-weight: 600;">{{ $index + 1 }}</td>
 
-                            {{-- Gambar UMKM --}}
                             <td class="text-center">
                                 @if ($umkm->url_gambar_umkm)
                                     <img src="{{ asset('storage/' . $umkm->url_gambar_umkm) }}" alt="Gambar UMKM" class="rounded" width="60" style="border: 2px solid #DEB887;">

@@ -137,7 +137,6 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-10 d-flex login-wrapper flex-wrap">
-            {{-- Left: Form --}}
             <div class="login-form col-md-6">
                 <div class="mb-4 text-center">
                     <h4>Sistem Rekomendasi Wisata</h4>
@@ -190,8 +189,6 @@
                     </div>
                 </form>
             </div>
-
-            {{-- Right: Image --}}
             <div class="img-col col-md-6">
                 <img src="{{ asset('images/logo.jpg') }}" alt="Travel Illustration">
             </div>

@@ -4,17 +4,15 @@
 <div class="container py-5">
     <div class="card border-0 shadow-lg rounded-4 overflow-hidden" style="background: rgba(255, 250, 240, 0.97); backdrop-filter: blur(12px);">
         <div class="row g-0">
-            {{-- Kolom Gambar --}}
             <div class="col-md-6 position-relative">
                 @if($umkm->url_gambar_umkm)
                     <div class="position-relative overflow-hidden" style="height: 350px;">
                         <img src="{{ asset('storage/' . $umkm->url_gambar_umkm) }}"
                             alt="Gambar UMKM" class="img-fluid w-100 h-100"
                             style="object-fit: cover; min-height: 350px; transition: transform 0.3s ease;">
-                        <!-- Overlay -->
-                        <div class="position-absolute top-0 start-0 w-100 h-100" 
+                        <div class="position-absolute top-0 start-0 w-100 h-100"
                              style="background: linear-gradient(135deg, rgba(139, 69, 19, 0.08), rgba(160, 82, 45, 0.08));"></div>
-                        <!-- Kategori Badge -->
+                        <!-- kategori -->
                         @if($umkm->category)
                             <div class="position-absolute top-0 start-0 m-3">
                                 <span class="badge" style="background: linear-gradient(135deg, #8B4513, #A0522D); color: white; border-radius: 20px; padding: 8px 16px; font-size: 0.9rem;">
@@ -30,7 +28,7 @@
                 @endif
             </div>
 
-            {{-- Kolom Detail --}}
+            {{-- detail umkm --}}
             <div class="col-md-6 p-5">
                 <h2 class="fw-bold mb-3" style="background: linear-gradient(135deg, #8B4513, #A0522D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     {{ $umkm->nama_usaha }}

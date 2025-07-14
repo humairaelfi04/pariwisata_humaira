@@ -4,12 +4,11 @@
 
 @section('content')
 <div class="container-fluid mt-4">
-    {{-- Heading --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold mb-0" style="color: #8B4513;">
             <i class="bi bi-tags me-2" style="color: #CD853F;"></i> Manajemen Kategori
         </h4>
-        <a href="{{ route('admin.kategori.create') }}" class="btn rounded-pill px-3 py-2 shadow-sm" 
+        <a href="{{ route('admin.kategori.create') }}" class="btn rounded-pill px-3 py-2 shadow-sm"
            style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
             <i class="bi bi-plus-circle me-1"></i> Tambah Kategori
         </a>
@@ -17,7 +16,7 @@
 
     {{-- Alert Sukses --}}
     @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show shadow-sm rounded-3" role="alert" 
+        <div class="alert alert-success alert-dismissible fade show shadow-sm rounded-3" role="alert"
              style="background: rgba(25, 135, 84, 0.1); border: 1px solid rgba(25, 135, 84, 0.2); color: #0f5132;">
             <i class="bi bi-check-circle me-2"></i>{{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -31,7 +30,7 @@
                 <i class="bi bi-list-ul me-2" style="color: #CD853F;"></i> Daftar Kategori
             </h5>
         </div>
-        
+
         <div class="card-body px-4 py-4">
             @if ($categories->count())
                 <div class="table-responsive">
@@ -55,7 +54,7 @@
                                         </div>
                                     </td>
                                     <td class="text-center" style="padding: 1rem 0.75rem; border: none;">
-                                        <span class="badge rounded-pill px-3 py-2" 
+                                        <span class="badge rounded-pill px-3 py-2"
                                               style="background: {{ $category->jenis_kategori == 'destinasi' ? 'linear-gradient(135deg, #8B4513, #A0522D)' : 'linear-gradient(135deg, #CD853F, #DEB887)' }}; color: white; font-size: 0.8rem; font-weight: 600;">
                                             <i class="bi {{ $category->jenis_kategori == 'destinasi' ? 'bi-geo-alt' : 'bi-shop' }} me-1"></i>
                                             {{ ucfirst($category->jenis_kategori) }}
@@ -64,7 +63,7 @@
                                     <td class="text-center" style="padding: 1rem 0.75rem; border: none;">
                                         <div class="d-flex justify-content-center gap-2">
                                             <a href="{{ route('admin.kategori.edit', $category->id) }}"
-                                               class="btn btn-sm rounded-pill px-3 py-2" 
+                                               class="btn btn-sm rounded-pill px-3 py-2"
                                                style="background: linear-gradient(135deg, #DEB887, #CD853F); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
@@ -72,7 +71,7 @@
                                                   class="d-inline" onsubmit="return confirm('Yakin ingin menghapus kategori ini?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-sm rounded-pill px-3 py-2" 
+                                                <button class="btn btn-sm rounded-pill px-3 py-2"
                                                         style="background: linear-gradient(135deg, #DC3545, #C82333); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                                                     <i class="bi bi-trash"></i>
                                                 </button>
@@ -91,7 +90,7 @@
                     </div>
                     <h5 class="fw-semibold mb-2" style="color: #8B4513;">Belum ada kategori</h5>
                     <p class="text-muted mb-3" style="color: #8B4513 !important;">Mulai dengan menambahkan kategori pertama Anda</p>
-                    <a href="{{ route('admin.kategori.create') }}" class="btn rounded-pill px-4 py-2" 
+                    <a href="{{ route('admin.kategori.create') }}" class="btn rounded-pill px-4 py-2"
                        style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                         <i class="bi bi-plus-circle me-1"></i> Tambah Kategori Pertama
                     </a>
@@ -143,26 +142,26 @@
     .card-body {
         padding: 1.5rem;
     }
-    
+
     .d-flex.justify-content-between {
         flex-direction: column;
         gap: 1rem;
         align-items: stretch;
     }
-    
+
     .btn {
         width: 100%;
     }
-    
+
     .table-responsive {
         font-size: 0.9rem;
     }
-    
+
     .d-flex.align-items-center {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .me-3 {
         margin-right: 0 !important;
         margin-bottom: 0.5rem;

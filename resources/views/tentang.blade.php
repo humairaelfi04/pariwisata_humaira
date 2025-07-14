@@ -202,7 +202,7 @@
         color: #8B4513 !important;
     }
 
-    /* Modern animations */
+    /* animasi */
     .fade-in-up {
         animation: fadeInUp 1.2s ease-out both;
     }
@@ -219,27 +219,27 @@
         box-shadow: 0 30px 80px rgba(139, 69, 19, 0.3);
     }
 
-    /* Enhanced floating animation */
+    /* enhanced floating animasi */
     .floating {
         animation: enhancedFloating 4s ease-in-out infinite;
     }
 
     @keyframes enhancedFloating {
-        0%, 100% { 
-            transform: translateY(0px) rotate(0deg); 
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg);
         }
-        25% { 
-            transform: translateY(-8px) rotate(1deg); 
+        25% {
+            transform: translateY(-8px) rotate(1deg);
         }
-        50% { 
-            transform: translateY(-15px) rotate(0deg); 
+        50% {
+            transform: translateY(-15px) rotate(0deg);
         }
-        75% { 
-            transform: translateY(-8px) rotate(-1deg); 
+        75% {
+            transform: translateY(-8px) rotate(-1deg);
         }
     }
 
-    /* Modern glow effect */
+    /* glow efek */
     .glow {
         box-shadow: 0 0 30px rgba(139, 69, 19, 0.2);
         transition: all 0.4s ease;
@@ -249,7 +249,7 @@
         box-shadow: 0 0 50px rgba(139, 69, 19, 0.4);
     }
 
-    /* Responsive design */
+    /* responsif design */
     @media (max-width: 768px) {
         .about-hero h1 {
             font-size: 2.8rem;
@@ -268,7 +268,7 @@
         }
     }
 
-    /* Particle effect */
+    /* partikel efek */
     .particles {
         position: absolute;
         top: 0;
@@ -304,7 +304,7 @@
     }
 </style>
 
-{{-- Hero Section --}}
+{{-- hero section --}}
 <div class="about-hero">
     <div class="particles">
         @for($i = 0; $i < 20; $i++)
@@ -324,7 +324,7 @@
     </div>
 </div>
 
-{{-- Visi Misi --}}
+{{-- visi misi --}}
 <section class="about-section">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -358,7 +358,7 @@
     </div>
 </section>
 
-{{-- Cerita Kami --}}
+{{-- our story --}}
 <section class="story-section">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -389,10 +389,10 @@
 </section>
 
 <script>
-// Enhanced intersection observer for animations
+// enhanced intersection observer utk animasinya
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.fade-in-up, .feature-box, .story-box');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -410,12 +410,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Enhanced floating animation delay
+// enhanced floating animasi delay
 document.querySelectorAll('.floating').forEach((element, index) => {
     element.style.animationDelay = `${index * 0.3}s`;
 });
 
-// Particle effect enhancement
+// particle efek enhancement
 function createParticle() {
     const particle = document.createElement('div');
     particle.className = 'particle';
@@ -424,15 +424,15 @@ function createParticle() {
     particle.style.height = particle.style.width;
     particle.style.animationDelay = Math.random() * 6 + 's';
     particle.style.animationDuration = Math.random() * 4 + 4 + 's';
-    
+
     document.querySelector('.particles').appendChild(particle);
-    
+
     setTimeout(() => {
         particle.remove();
     }, 8000);
 }
 
-// Create particles periodically
+// partikel periodical
 setInterval(createParticle, 500);
 </script>
 @endsection

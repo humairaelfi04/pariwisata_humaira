@@ -22,7 +22,7 @@ class DashboardController extends Controller
             ? round(($totalReviewDisetujui / $totalReview) * 100)
             : 0;
 
-        // 👇 Query untuk mengambil 3 event terbaru
+        //untuk mengambil 3 event terbaru
         $latestEvents = Event::orderBy('tanggal_mulai', 'desc')->limit(3)->get();
 
         return view('admin.dashboard', compact(
@@ -31,7 +31,7 @@ class DashboardController extends Controller
             'totalEvent',
             'totalReview',
             'reviewProgress',
-            'latestEvents' // 👈 kirim ke view
+            'latestEvents' 
         ));
     }
     private function getReviewProgress()

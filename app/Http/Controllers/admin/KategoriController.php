@@ -16,12 +16,12 @@ class KategoriController extends Controller
 
     public function create()
     {
-        return view('admin.kategori.create'); // buat file ini nanti
+        return view('admin.kategori.create');
     }
 
     public function store(Request $request)
     {
-        // Validasi dan simpan data ke database
+        //validasi dan simpan data ke database
         $request->validate([
             'nama_kategori' => 'required|string|max:255',
             'jenis_kategori' => 'required|in:destinasi,umkm,acara',

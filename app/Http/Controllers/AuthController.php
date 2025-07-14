@@ -10,13 +10,13 @@ use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
-    // Menampilkan form login
+    //show form login
     public function loginForm()
     {
         return view('login');
     }
 
-    // Proses login user
+    //proses login user
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -35,7 +35,7 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    // Proses logout user
+    //proses logout user
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
@@ -50,8 +50,9 @@ class AuthController extends Controller
     {
         return view('register');
     }
+    
 
-// Proses register
+//proses register
 public function register(Request $request)
     {
         $request->validate([

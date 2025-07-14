@@ -5,8 +5,6 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <h2 class="mb-4">Detail Destinasi & Ulasan Pengunjung</h2>
-
-            {{-- Detail Destinasi --}}
             <div class="card mb-4">
                 <img src="{{ asset('images/' . $destination->url_gambar_utama) }}" class="card-img-top" alt="{{ $destination->nama }}">
                 <div class="card-body">

@@ -17,7 +17,6 @@
 
             <div class="card-body px-4">
 
-                {{-- Gambar UMKM --}}
                 <div class="mb-4 text-center">
                     @if ($umkm->url_gambar_umkm)
                         <img src="{{ asset('storage/' . $umkm->url_gambar_umkm) }}" alt="Gambar UMKM" class="img-fluid rounded shadow-sm" style="max-height: 300px; border: 3px solid #DEB887;">

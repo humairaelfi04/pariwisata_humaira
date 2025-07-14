@@ -36,7 +36,7 @@ class UmkmController extends Controller
 
         $data = $request->all();
 
-        // Upload gambar jika ada
+        //upload gambar
         if ($request->hasFile('url_gambar_umkm')) {
             $gambar = $request->file('url_gambar_umkm')->store('umkm', 'public');
             $data['url_gambar_umkm'] = $gambar;
@@ -70,9 +70,9 @@ class UmkmController extends Controller
 
         $data = $request->all();
 
-        // Update gambar jika ada yang baru
+        //update gambar jika ada yang baru
         if ($request->hasFile('url_gambar_umkm')) {
-            // Hapus gambar lama jika ada
+            //hapus gambar lama jika ada
             if ($umkm->url_gambar_umkm && Storage::disk('public')->exists($umkm->url_gambar_umkm)) {
                 Storage::disk('public')->delete($umkm->url_gambar_umkm);
             }
@@ -96,7 +96,7 @@ class UmkmController extends Controller
     {
         $umkm = Umkm::findOrFail($id);
 
-        // Hapus gambar jika ada
+        //hapus gambar jika ada
         if ($umkm->url_gambar_umkm && Storage::disk('public')->exists($umkm->url_gambar_umkm)) {
             Storage::disk('public')->delete($umkm->url_gambar_umkm);
         }

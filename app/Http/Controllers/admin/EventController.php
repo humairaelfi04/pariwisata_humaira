@@ -31,7 +31,7 @@ class EventController extends Controller
             'url_gambar_acara' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // Upload gambar jika ada
+        //upload gambar jika ada
         if ($request->hasFile('url_gambar_acara')) {
             $gambar = $request->file('url_gambar_acara');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
@@ -61,14 +61,14 @@ class EventController extends Controller
             'url_gambar_acara' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // Upload gambar baru jika ada
+        //upload gambar baru
         if ($request->hasFile('url_gambar_acara')) {
             $gambar = $request->file('url_gambar_acara');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
             $gambar->move(public_path('images'), $namaFile);
             $validated['url_gambar_acara'] = $namaFile;
 
-            // Hapus gambar lama jika ada
+            //hapus gambar lama
             if ($event->url_gambar_acara && file_exists(public_path('images/' . $event->url_gambar_acara))) {
                 unlink(public_path('images/' . $event->url_gambar_acara));
             }
@@ -86,7 +86,7 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        // Hapus gambar dari public/images jika ada
+        //hapus gambar dari public/images
         if ($event->url_gambar_acara && file_exists(public_path('images/' . $event->url_gambar_acara))) {
             unlink(public_path('images/' . $event->url_gambar_acara));
         }

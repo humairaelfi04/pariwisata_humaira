@@ -31,21 +31,21 @@
                     </div>
                 @endif
 
-                {{-- Form --}}
+                {{-- Form Edit Events--}}
                 <form action="{{ route('admin.event.update', $event->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PUT')
 
                     <div class="mb-3">
                         <label for="judul" class="form-label fw-semibold" style="color: #8B4513;">Judul Event <span class="text-danger">*</span></label>
-                        <input type="text" name="judul" id="judul" class="form-control rounded-3" value="{{ old('judul', $event->judul) }}" required 
+                        <input type="text" name="judul" id="judul" class="form-control rounded-3" value="{{ old('judul', $event->judul) }}" required
                                style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                placeholder="Masukkan judul event">
                     </div>
 
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label fw-semibold" style="color: #8B4513;">Deskripsi <span class="text-danger">*</span></label>
-                        <textarea name="deskripsi" id="deskripsi" class="form-control rounded-3" rows="4" required 
+                        <textarea name="deskripsi" id="deskripsi" class="form-control rounded-3" rows="4" required
                                   style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                   placeholder="Jelaskan detail event">{{ old('deskripsi', $event->deskripsi) }}</textarea>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="tanggal_mulai" class="form-label fw-semibold" style="color: #8B4513;">Tanggal Mulai <span class="text-danger">*</span></label>
-                            <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="form-control rounded-3" value="{{ old('tanggal_mulai', $event->tanggal_mulai) }}" required 
+                            <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="form-control rounded-3" value="{{ old('tanggal_mulai', $event->tanggal_mulai) }}" required
                                    style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;">
                         </div>
                         <div class="col-md-6 mb-3">
@@ -66,7 +66,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="lokasi" class="form-label fw-semibold" style="color: #8B4513;">Lokasi <span class="text-danger">*</span></label>
-                            <input type="text" name="lokasi" id="lokasi" class="form-control rounded-3" value="{{ old('lokasi', $event->lokasi) }}" required 
+                            <input type="text" name="lokasi" id="lokasi" class="form-control rounded-3" value="{{ old('lokasi', $event->lokasi) }}" required
                                    style="border: 2px solid #DEB887; background: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;"
                                    placeholder="Tempat pelaksanaan event">
                         </div>
@@ -88,13 +88,13 @@
                             </span>
                         </div>
                         <small class="text-muted" style="color: #8B4513 !important;">Format: JPG, PNG, GIF. Maksimal 2MB</small>
-                        
+
                         @if ($event->url_gambar_acara)
                             <div class="mt-3 p-3 rounded-3" style="background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(139, 69, 19, 0.1);">
                                 <small class="fw-semibold" style="color: #8B4513;">Gambar saat ini:</small>
                                 <div class="mt-2">
-                                    <img src="{{ asset('images/' . $event->url_gambar_acara) }}" alt="Gambar Event" 
-                                         class="img-thumbnail rounded-3" width="200" 
+                                    <img src="{{ asset('images/' . $event->url_gambar_acara) }}" alt="Gambar Event"
+                                         class="img-thumbnail rounded-3" width="200"
                                          style="border: 2px solid #DEB887; box-shadow: 0 4px 12px rgba(139, 69, 19, 0.1);">
                                 </div>
                             </div>
@@ -102,11 +102,11 @@
                     </div>
 
                     <div class="d-flex justify-content-end gap-3 mt-4 pt-3" style="border-top: 1px solid rgba(139, 69, 19, 0.1);">
-                        <a href="{{ route('admin.event.index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2" 
+                        <a href="{{ route('admin.event.index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2"
                            style="border: 2px solid #8B4513; color: #8B4513; font-weight: 600; transition: all 0.3s ease;">
                             <i class="bi bi-x-circle me-1"></i> Batal
                         </a>
-                        <button type="submit" class="btn rounded-pill px-4 py-2 shadow-sm" 
+                        <button type="submit" class="btn rounded-pill px-4 py-2 shadow-sm"
                                 style="background: linear-gradient(135deg, #8B4513, #A0522D); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                             <i class="bi bi-save me-1"></i> Simpan Perubahan
                         </button>
@@ -181,11 +181,11 @@
     .card-body {
         padding: 1.5rem;
     }
-    
+
     .d-flex.justify-content-end {
         flex-direction: column;
     }
-    
+
     .btn {
         width: 100%;
         margin-bottom: 0.5rem;

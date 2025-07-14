@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container py-5">
-    <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -23,18 +22,16 @@
         <div class="col-lg-10">
             <div class="card border-0 shadow-xl rounded-4 overflow-hidden" data-aos="fade-up" style="background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); border: 1px solid rgba(139, 69, 19, 0.1);">
                 <div class="row g-0">
-                    {{-- Gambar Acara di sisi kiri --}}
                     <div class="col-md-6 position-relative">
                         @if($event->url_gambar_acara)
                             <div class="position-relative overflow-hidden" style="height: 400px;">
                                 <img src="{{ asset('images/' . $event->url_gambar_acara) }}"
                                      alt="Gambar Acara" class="img-fluid h-100 w-100"
                                      style="object-fit: cover; min-height: 400px; transition: transform 0.4s ease;">
-                                <!-- Overlay dengan gradient -->
+
                                 <div class="position-absolute top-0 start-0 w-100 h-100"
                                      style="background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1), rgba(210, 180, 140, 0.1));"></div>
 
-                                <!-- Status Badge -->
                                 <div class="position-absolute top-0 end-0 m-4">
                                     <span class="badge" style="background: rgba(255, 255, 255, 0.95); color: #8B4513; border-radius: 25px; padding: 10px 20px; font-size: 0.9rem; backdrop-filter: blur(10px);">
                                         <i class="fas fa-calendar-check me-1" style="color: #D2691E;"></i>Event Aktif
@@ -51,7 +48,7 @@
                         @endif
                     </div>
 
-                    {{-- Detail Acara di sisi kanan --}}
+
                     <div class="col-md-6 p-5">
                         <h2 class="fw-bold mb-4" style="background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2rem;">
                             {{ $event->judul }}

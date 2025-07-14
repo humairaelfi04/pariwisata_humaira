@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="container-fluid py-4">
-    {{-- Header --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold mb-0" style="color: #8B4513;">
             <i class="bi bi-speedometer2 me-2" style="color: #CD853F;"></i> Dashboard Admin Pariwisata
@@ -96,7 +95,7 @@
                         <h5 class="fw-bold mb-0" style="color: #8B4513;">
                             <i class="bi bi-calendar-event me-2" style="color: #CD853F;"></i> Daftar Acara Terbaru
                         </h5>
-                        <a href="{{ route('admin.event.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2" 
+                        <a href="{{ route('admin.event.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2"
                            style="border-color: #8B4513; color: #8B4513; font-weight: 500; transition: all 0.3s ease;">
                             Lihat Semua
                         </a>
@@ -160,7 +159,7 @@
         </div>
 
         {{-- Progress Moderasi Review --}}
-        <div class="col-lg-4">
+        {{-- <div class="col-lg-4">
             <div class="card border-0 shadow-lg rounded-4 p-4" style="background: linear-gradient(135deg, #FDF5E6, #F5F5DC); backdrop-filter: blur(15px); border: 1px solid rgba(139, 69, 19, 0.15);">
                 <div class="text-center">
                     <h5 class="fw-bold mb-4" style="color: #8B4513;">
@@ -191,8 +190,8 @@
                             <span style="color: #8B4513; font-weight: 600;">{{ $reviewProgress }}%</span>
                         </div>
                         <div class="progress rounded-pill" style="height: 8px; background: rgba(139, 69, 19, 0.1);">
-                            <div class="progress-bar rounded-pill" role="progressbar" 
-                                 style="width: {{ $reviewProgress }}%; background: linear-gradient(135deg, #8B4513, #A0522D);" 
+                            <div class="progress-bar rounded-pill" role="progressbar"
+                                 style="width: {{ $reviewProgress }}%; background: linear-gradient(135deg, #8B4513, #A0522D);"
                                  aria-valuenow="{{ $reviewProgress }}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
@@ -200,7 +199,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <style>
 .card {
@@ -272,16 +271,16 @@
     .card-body {
         padding: 1.5rem;
     }
-    
+
     .table-responsive {
         font-size: 0.9rem;
     }
-    
+
     .d-flex.align-items-center {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .me-3 {
         margin-right: 0 !important;
         margin-bottom: 0.5rem;

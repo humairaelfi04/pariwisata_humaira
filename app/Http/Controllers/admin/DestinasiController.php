@@ -36,12 +36,11 @@ class DestinasiController extends Controller
             'alamat' => 'required',
             'harga_tiket' => 'required|numeric',
             'jam_operasional' => 'required',
-            //'status_publikasi' => 'required|in:published,draft',
             'category_id' => 'required|exists:humaira_categories,id',
             'url_gambar_utama' => 'nullable|image|max:2048',
         ]);
 
-        // Upload gambar jika ada
+        // Upload gambar
         if ($request->hasFile('url_gambar_utama')) {
             $gambar = $request->file('url_gambar_utama');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
@@ -74,24 +73,18 @@ class DestinasiController extends Controller
             'alamat' => 'required',
             'harga_tiket' => 'required|numeric',
             'jam_operasional' => 'required',
-            //'status_publikasi' => 'required|in:published,draft',
             'category_id' => 'required|exists:humaira_categories,id',
             'url_gambar_utama' => 'nullable|image|max:2048',
         ]);
 
         $destinasi = \App\Models\Destination::findOrFail($id);
 
-        // Upload gambar baru jika ada
+        //upload gambar baru jika ada
         if ($request->hasFile('url_gambar_utama')) {
             $gambar = $request->file('url_gambar_utama');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
             $gambar->move(public_path('images'), $namaFile);
             $validated['url_gambar_utama'] = $namaFile;
-
-            // (Optional) Hapus gambar lama dari storage jika perlu
-            // if ($destinasi->url_gambar_utama) {
-            //     unlink(public_path('images/' . $destinasi->url_gambar_utama));
-            // }
         }
 
         $destinasi->update($validated);
@@ -103,7 +96,7 @@ class DestinasiController extends Controller
     {
         $destinasi = \App\Models\Destination::findOrFail($id);
 
-        // Hapus gambar dari public/images jika perlu
+        //hapus gambar dari public/images
         if ($destinasi->url_gambar_utama && file_exists(public_path('images/' . $destinasi->url_gambar_utama))) {
             unlink(public_path('images/' . $destinasi->url_gambar_utama));
         }
